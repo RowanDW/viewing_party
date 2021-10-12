@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   root "welcome#index"
   # get "/", to: "welcome#index"
   resources :users, only: [:new,:create]
-
+  get '/login', to: 'users#login_form'
+  post '/login', to: 'users#login'
+  get '/dashboard', to: 'dashboard#index'
+  get '/discover', to: 'discover#index'
+  resources :movies, only: [:index,:show]
+  resources :parties, only: [:new,:create]
 end

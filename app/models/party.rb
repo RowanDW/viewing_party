@@ -1,5 +1,6 @@
 class Party < ApplicationRecord
   validates :movie, :duration, :day, :start_time, presence: true
+  validates :host_id, presence: true  ##?
   validates :duration, numericality: true
   has_many :invites
 

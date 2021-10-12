@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe Party, type: :model do
+RSpec.describe User, type: :model do
   describe 'relationships' do
-    it { should belong_to(:host) }
+    it { should have_many(:friendships) }
+    it { should have_many(:friends).through(:friendships) }
     it { should have_many(:invites) }
-    it { should have_many(:guests).through(:invites) }
+    # it { should have_many(:guest_parties).through(:invites) }
+    it { should have_many(:parties).through(:invites) }
+    it { should have_many(:hosted_parties) }
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:movie) }
-    it { should validate_presence_of(:day) }
-    it { should validate_presence_of(:start_time) }
-    it { should validate_presence_of(:duration) }
-    it { should validate_numericality_of(:duration) }
-    it { should validate_presence_of(:host_id) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email) }
   end
 
   # before(:each) do
