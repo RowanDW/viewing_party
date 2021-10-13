@@ -25,4 +25,8 @@ Schema:
 
 ![21-Oct-ViewingParty](https://user-images.githubusercontent.com/83834410/136859707-5369b3fe-8284-4804-9dbe-b90f29f42395.png)
 
-This is a test
+## Contact
+Created by:
+
+* Rowan DeLong [GitHub](https://github.com/RowanDW) • [LinkedIn](https://www.linkedin.com)
+* Kevin Nguyen [GitHub](https://github.com/denverdevelopments) • [LinkedIn](https://www.linkedin.com/in/kevin-nguyen-59510520a/)
