@@ -3,9 +3,15 @@ Rails.application.routes.draw do
 
   root "welcome#index"
   # get "/", to: "welcome#index"
-  resources :users, only: [:new,:create]
-  get '/login', to: 'users#login_form'
-  post '/login', to: 'users#login'
+  resources :users, only: [:create]
+  # get '/login', to: 'users#login_form'
+  # post '/login', to: 'users#login'
+  # get '/login', to: 'sessions#new'
+  get '/registration', to: 'users#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
+
   get '/dashboard', to: 'dashboard#index'
   get '/discover', to: 'discover#index'
   resources :movies, only: [:index,:show]
