@@ -16,5 +16,4 @@ class User < ApplicationRecord
 
 end
 
-# has_many :parties, through: :invites
 # belongs_to :party
