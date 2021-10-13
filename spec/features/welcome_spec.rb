@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "The welcome page" do
-  it "has a welcome messgae and description" do
+  it "has a welcome message and description" do
     visit root_path
 
     within('#welcome') do
@@ -14,6 +14,9 @@ RSpec.describe "The welcome page" do
     visit root_path
 
     expect(page).to have_link("New to Viewing Party? Register Here")
+    click_on "New to Viewing Party? Register Here"
+
+    expect(current_path).to eq(registration_path)
   end
 
   it "can log in with valid credentials" do
@@ -46,5 +49,28 @@ RSpec.describe "The welcome page" do
     expect(current_path).to eq(root_path)
 
     expect(page).to have_content("Email or password were incorrect")
+  end
+
+  it 'can log out a logged in user' do
+    user = User.create(name: 'Rowan', email: "rowan@test.com", password: "test")
+
+    visit root_path
+    expect(page).to have_link("New to Viewing Party? Register Here")
+    expect(page).to_not have_link("Log Out")
+
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+
+    click_on "Log In"
+
+    visit root_path
+    expect(page).to_not have_link("New to Viewing Party? Register Here")
+    expect(page).to have_link("Log Out")
+
+    click_on "Log Out"
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_link("New to Viewing Party? Register Here")
+    expect(page).to_not have_link("Log Out")
   end
 end
