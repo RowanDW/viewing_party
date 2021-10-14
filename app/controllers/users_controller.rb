@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     user = user_params
     user[:email] = user[:email].downcase
     new_user = User.new(user)
+    save_user(new_user)
+  end
+
+  def save_user(new_user)
     if new_user.save
       session[:user_id] = new_user.id
       flash[:success] = "Welcome, #{new_user.name}!"
@@ -16,6 +20,8 @@ class UsersController < ApplicationController
       redirect_to registration_path
     end
   end
+
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :password)

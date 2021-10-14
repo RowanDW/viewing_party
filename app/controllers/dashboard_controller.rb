@@ -1,3 +1,5 @@
 class DashboardController < ApplicationController
-  def index; end
+  def index
+    @friendship = Friendship.new
+  end
 end

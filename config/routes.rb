@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "welcome#index"
   # get "/", to: "welcome#index"
   resources :users, only: [:create]
+  resources :friendships, only: [:create]
   # get '/login', to: 'users#login_form'
   # post '/login', to: 'users#login'
   # get '/login', to: 'sessions#new'

@@ -1,4 +1,4 @@
-class DiscoverController < ApplicationController ##
+class DiscoverController < ApplicationController
   def index
     # if params[:query]
     #   @application = Application.find(params[:id])
@@ -7,9 +7,6 @@ class DiscoverController < ApplicationController ##
     # else
     #   @application = Application.find(params[:id])
     # end
-    if params[:query]
-      @search_movies = Movie.search(params[:query])
-    end
-
+    @search_movies = Movie.search(params[:query]) if params[:query]
   end
 end

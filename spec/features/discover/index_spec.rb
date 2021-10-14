@@ -11,7 +11,7 @@ RSpec.describe 'the discover-index page' do
 
   end
 
-  it 'has button to go to top rated movies' do
+  xit 'has button to go to top rated movies' do
     visit discover_path
 
     expect(page).to have_button("Find Movies")
