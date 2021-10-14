@@ -3,5 +3,6 @@ class Friendship < ApplicationRecord
   validates :friend_id, presence: true # #?
 
   # belongs_to :friend, foreign_key: :user_id, class_name: 'User'
-  belongs_to :friended, foreign_key: :friend_id, class_name: 'User', inverse_of: :friends
+  belongs_to :user
+  belongs_to :friend, class_name: 'User'
 end
