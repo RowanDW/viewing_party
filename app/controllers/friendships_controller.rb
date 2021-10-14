@@ -1,19 +1,12 @@
 class FriendshipsController < ApplicationController
-
   def create
     friend = User.find_by(email: friendship_params[:email].downcase)
     if friend
       new_friendship = Friendship.new(user_id: current_user.id, friend_id: friend.id)
-    else
-      new_friendship = Friendship.new
-    end
-
-    if new_friendship.save
-      flash[:success] = "#{friend.name} successfully added!"
+      flash[:success] = "#{friend.name} successfully added!" if new_friendship.save
     else
       flash[:warning] = 'Error: invalid email'
     end
-    
     redirect_to dashboard_path
   end
 
