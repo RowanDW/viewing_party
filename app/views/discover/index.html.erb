@@ -1,0 +1,9 @@
+<%= button_to "Find Top Rated Movies",  movies_path, method: :get %>
+
+<h2>OR</h2><br/>
+
+<%= bootstrap_form_with(model: @movie, url: movies_path, local: true, method: :get, class: 'form-inline') do |f| %>
+  <%= f.text_field :query, label: "Search By Title" %><br/><br/>
+
+  <%= f.submit 'Find Movies' %>
+<% end %>
