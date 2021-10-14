@@ -23,70 +23,150 @@ RSpec.describe "The dashboard page" do
     click_on 'Discover Movies'
 
     expect(current_path).to eq(discover_path)
-   end
+  end
 
-   context 'friends section' do
-     it "displays friends" do
-       friendship1 = Friendship.create!(user_id: @rowan.id, friend_id: @kevin.id)
-       friendship2 = Friendship.create!(user_id: @rowan.id, friend_id: @jules.id)
-       friendship3 = Friendship.create!(user_id: @kevin.id, friend_id: @hanna.id)
+  context 'friends section' do
+    it "displays friends" do
+      friendship1 = Friendship.create!(user_id: @rowan.id, friend_id: @kevin.id)
+      friendship2 = Friendship.create!(user_id: @rowan.id, friend_id: @jules.id)
+      friendship3 = Friendship.create!(user_id: @kevin.id, friend_id: @hanna.id)
 
-       visit dashboard_path
+      visit dashboard_path
 
-       expect(page).to have_content("My Friends:")
+      expect(page).to have_content("My Friends:")
 
-       within("#added-friends") do
-         expect(page).to have_content(@kevin.name)
-         expect(page).to have_content(@jules.name)
-         expect(page).to_not have_content(@hanna.name)
-       end
-     end
+      within("#added-friends") do
+       expect(page).to have_content(@kevin.name)
+       expect(page).to have_content(@jules.name)
+       expect(page).to_not have_content(@hanna.name)
+      end
+    end
 
-     it "displays a message when a user has no friends" do
-       visit dashboard_path
+    it "displays a message when a user has no friends" do
+      visit dashboard_path
 
-       within("#added-friends") do
-         expect(page).to have_content('You currently have no friends')
-       end
-     end
+      within("#added-friends") do
+        expect(page).to have_content('You currently have no friends')
+      end
+    end
 
-     xit "can add friends with an email" do
-       visit dashboard_path
+    it "can add friends with an email" do
+      visit dashboard_path
 
-       within("#added-friends") do
-         expect(page).to_not have_content(@kevin.name)
-         expect(page).to have_content('You currently have no friends')
-       end
+      within("#added-friends") do
+        expect(page).to_not have_content(@kevin.name)
+        expect(page).to have_content('You currently have no friends')
+      end
 
-       within('#add-friend') do
-         fill_in 'friendship[email]', with: @kevin.email
-         click_on 'Add Friend'
-       end
+      within('#add-friend') do
+        fill_in 'friendship[email]', with: @kevin.email
+        click_on 'Add Friend'
+      end
+      expect(page).to have_content("#{@kevin.name} successfully added!")
 
-       expect(current_path).to eq(dashboard_path)
-       expect(page).to have_content("#{@kevin.name} successfully added!")
+      @rowan.reload
+      @kevin.reload
+      visit dashboard_path
 
-       within("#added-friends") do
+      expect(current_path).to eq(dashboard_path)
 
-         expect(page).to have_content(@kevin.name)
-       end
-     end
+      within("#added-friends") do
+        expect(page).to have_content(@kevin.name)
+      end
+    end
 
-     it "sad path for adding friends" do
-       visit dashboard_path
+    it "sad path for adding friends" do
+      visit dashboard_path
 
-       within("#added-friends") do
-         expect(page).to_not have_content(@kevin.name)
-         expect(page).to have_content('You currently have no friends')
-       end
+      within("#added-friends") do
+        expect(page).to_not have_content(@kevin.name)
+        expect(page).to have_content('You currently have no friends')
+      end
 
-       within('#add-friend') do
-         fill_in 'friendship[email]', with: 'invalid email'
-         click_on 'Add Friend'
-       end
+      within('#add-friend') do
+        fill_in 'friendship[email]', with: 'invalid email'
+        click_on 'Add Friend'
+      end
 
-       expect(current_path).to eq(dashboard_path)
-       expect(page).to have_content('Error: invalid email')
-     end
-   end
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content('Error: invalid email')
+    end
+  end
+
+  context 'parties section' do
+    it "displays all parties a user has been invited to and hosted" do
+      party = Party.create(movie: "Fast & Furious", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
+      party2 = Party.create(movie: "F9", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+      party3 = Party.create(movie: "Fast 8", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+      invite = Invite.create(party_id: party2.id, guest_id: @rowan.id)
+      invite2 = Invite.create(party_id: party3.id, guest_id: @hanna.id)
+      visit dashboard_path
+
+      within('#parties') do
+        expect(page).to have_content("Viewing Parties:")
+      end
+      within('#hosting') do
+        expect(page).to have_content("My Parties:")
+        expect(page).to have_content("Fast & Furious")
+        expect(page).to_not have_content("F9")
+        expect(page).to_not have_content("Fast 8")
+      end
+      within('#invited') do
+        expect(page).to have_content("Invitations:")
+        expect(page).to have_content("F9")
+        expect(page).to_not have_content("Fast & Furious")
+        expect(page).to_not have_content("Fast 8")
+      end
+    end
+
+    it "displays all the attributes of each party" do
+      party = Party.create(movie: "Fast & Furious", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
+      party2 = Party.create(movie: "F9", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+      invite = Invite.create(party_id: party.id, guest_id: @kevin.id)
+      invite2 = Invite.create(party_id: party.id, guest_id: @hanna.id)
+      invite3 = Invite.create(party_id: party2.id, guest_id: @jules.id)
+      invite4 = Invite.create(party_id: party2.id, guest_id: @rowan.id)
+      visit dashboard_path
+
+      within("#party-#{party.id}") do
+        expect(page).to have_content(party.movie)
+        expect(page).to have_content(party.duration)
+        expect(page).to have_content(party.day)
+        expect(page).to have_content(party.start_time)
+        expect(page).to have_content('Hosting')
+        expect(page).to have_content(@kevin.name)
+        expect(page).to have_content(@hanna.name)
+      end
+
+      within("#party-#{party2.id}") do
+        expect(page).to have_content(party2.movie)
+        expect(page).to have_content(party2.duration)
+        expect(page).to have_content(party2.day)
+        expect(page).to have_content(party2.start_time)
+        expect(page).to have_content("Host: #{@kevin.name}")
+        expect(page).to have_content(@jules.name)
+        expect(page).to have_content(@rowan.name)
+      end
+    end
+
+    xit "links each movie title to the movie show page" do
+      party = Party.create(movie: "Fast & Furious", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
+      party2 = Party.create(movie: "F9", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+      invite = Invite.create(party_id: party.id, guest_id: @kevin.id)
+      invite2 = Invite.create(party_id: party.id, guest_id: @hanna.id)
+      invite3 = Invite.create(party_id: party2.id, guest_id: @jules.id)
+      invite4 = Invite.create(party_id: party2.id, guest_id: @rowan.id)
+      visit dashboard_path
+
+      within("#party-#{party.id}") do
+        expect(page).to have_link(party.movie)
+      end
+
+      within("#party-#{party2.id}") do
+        expect(page).to have_link(party2.movie)
+      end
+
+      # Need to add link destinations
+    end
+  end
 end

@@ -25,3 +25,46 @@
     <% end %>
   </section>
 </div>
+
+<div id="parties">
+  <h3>Viewing Parties: </h3>
+  <section id="hosting">
+    <h4>My Parties: </h4>
+    <% current_user.hosted_parties.each do |party| %>
+      <div id="party-<%= party.id %>">
+        <p>Movie: <%= link_to party.movie %></p> # TODO
+        <p>Day: <%= party.day %></p>
+        <p>Time: <%= party.start_time %></p>
+        <p>Duration: <%= party.duration %></p>
+        <p>Hosting</p>
+        <p>Invited: </p>
+        <% party.guests.each do |guest| %>
+          <%= guest.name %>
+        <% end %>
+        <br>
+      </div>
+    <% end %>
+  </section>
+
+  <section id="invited">
+    <h4>Invitations: </h4>
+    <% current_user.parties.each do |party| %>
+      <div id="party-<%= party.id %>">
+        <p>Movie: <%= link_to party.movie %></p> # TODO
+        <p>Day: <%= party.day %></p>
+        <p>Time: <%= party.start_time %></p>
+        <p>Duration: <%= party.duration %></p>
+        <p>Host: <%= party.host.name %></p>
+        <p>Invited: </p>
+        <% party.guests.each do |guest| %>
+          <% if guest == current_user %>
+            <b><%= guest.name %></b>
+          <% else %>
+            <%= guest.name %>
+          <% end %>
+        <% end %>
+        <br>
+      </div>
+    <% end %>
+  </section>
+</div>
