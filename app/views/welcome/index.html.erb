@@ -1,0 +1,22 @@
+<div id='welcome'>
+  <h1>Welcome to Viewing Party</h1>
+  <h3>Explore movies and create a viewing party event for you and your friends to watch a movie together</h3>
+</div>
+
+<% if current_user %>
+    <%= link_to 'Log Out', logout_path, method: :delete %>
+<% else %>
+  <div id='log_in'>
+    <h3>Log In</h3>
+    <%= form_with url: login_path, local: true, method: :post do |form| %>
+      <%= form.label :email, 'Email:' %>
+      <%= form.text_field :email %>
+
+      <%= form.label :password, 'Password:' %>
+      <%= form.password_field :password %>
+
+      <%= form.submit 'Log In' %>
+    <% end %>
+  </div>
+  <%= link_to 'New to Viewing Party? Register Here', registration_path %>
+<% end %>
