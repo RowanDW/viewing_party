@@ -1,10 +1,3 @@
-class MoviesController < ApplicationController ##
-  def index
-
-  end
-
-  def index
-
-  end
-
+class MoviesController < ApplicationController
+  def index; end
 end
