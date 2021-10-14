@@ -18,11 +18,11 @@ RSpec.describe "The dashboard page" do
   it "has a button to discover movies" do
     visit dashboard_path
 
-  #   expect(page).to have_button('Discover Movies')
-  #
-  #   click_on 'Discover Movies'
-  #
-  #   expect(current_path).to eq(discover_path)
+    expect(page).to have_button('Discover Movies')
+
+    click_on 'Discover Movies'
+
+    expect(current_path).to eq(discover_path)
    end
 
    context 'friends section' do
