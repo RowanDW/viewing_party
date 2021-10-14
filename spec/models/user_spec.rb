@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'relationships' do
+    it { should have_secure_password }
     it { should have_many(:friendships) }
     it { should have_many(:friends).through(:friend_relationships) }
     it { should have_many(:invites) }

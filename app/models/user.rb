@@ -2,7 +2,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
 
-  ## validates :password_digest, presence: true
+  # validates :password_digest, presence: true
   has_secure_password
 
   has_many :friendships, dependent: :destroy
@@ -16,5 +16,4 @@ class User < ApplicationRecord
   has_many :friends, through: :friend_relationships, source: :friended
 end
 
-# has_many :parties, through: :invites
 # belongs_to :party
