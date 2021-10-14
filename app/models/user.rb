@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :parties, foreign_key: :guest_id, class_name: 'Party', through: :invites
   # XX has_many :guest_parties, foreign_key: :guest_id, class_name: "Party", through: :invites
 
-  has_many :friends, foreign_key: :friend_id, class_name: 'User', through: :friendships # ?
+  has_many :friend_relationships, foreign_key: :user_id, class_name: 'Friendship'
+  has_many :friends, through: :friend_relationships, source: :friended
 end
 
 # has_many :parties, through: :invites

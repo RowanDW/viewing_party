@@ -1,1 +1,27 @@
-<h1>My Dashboard</h1>
+<h1>Welcome <%= current_user.name %>!</h1>
+
+<div id='discover'>
+  <%# button_to 'Discover Movies', discover_path, method: :get %>
+</div>
+
+<div id="friends">
+  <h3>My Friends:</h3>
+  <section id='add-friend'>
+    <%= form_with model: @friendship, local: true do |form| %>
+      <%= form.label :email, "Friend's Email:" %>
+      <%= form.text_field :email %>
+
+      <%= form.submit 'Add Friend' %>
+    <% end %>
+  </section>
+
+  <section id='added-friends'>
+    <% if current_user.friends.size > 0 %>
+      <% current_user.friends.each do |friend| %>
+        <p><%= friend.name %></p>
+      <% end %>
+    <% else %>
+      <p>You currently have no friends</p>
+    <% end %>
+  </section>
+</div>

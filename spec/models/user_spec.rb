@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'relationships' do
     it { should have_many(:friendships) }
-    it { should have_many(:friends).through(:friendships) }
+    it { should have_many(:friends).through(:friend_relationships) }
     it { should have_many(:invites) }
     # it { should have_many(:guest_parties).through(:invites) }
     it { should have_many(:parties).through(:invites) }
