@@ -2,10 +2,8 @@
 
 <h2>OR</h2><br/>
 
-<%# <%= form_with url: discover_path, method: :post, local: true do |form| %> %>
 <%= bootstrap_form_with(model: @movie, url: movies_path, local: true, method: :get, class: 'form-inline') do |f| %>
-  <%= f.label :query, placeholder: "Search by movie title", skip_label: true %>
-  <%= f.text_field :query %><br/><br/>
+  <%= f.text_field :query, label: "Search By Title" %><br/><br/>
 
   <%= f.submit 'Find Movies' %>
 <% end %>
