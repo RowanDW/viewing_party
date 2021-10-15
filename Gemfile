@@ -18,11 +18,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'  #
 gem 'bootstrap', "~> 4.0.0" #
 gem "bootstrap_form", "~> 4.0"  #
-gem 'jquery-rails'  #
+gem 'jquery-rails' #
 
 group :development, :test do
   gem 'pry'
   gem 'travis'
+  gem 'figaro'
 end
 
 group :development do

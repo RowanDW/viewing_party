@@ -1,0 +1,33 @@
+<h1>New Viewing party</h1>
+
+<h3><%= @title%></h3>
+<%= form_with model: @party, local: true do |form| %>
+<p>
+  <%= form.label :duration, "Duration of Party: "%>
+  <%= form.number_field :duration, value: @party.duration %> minutes
+</p>
+
+<p>
+  <%= form.label :day, "Day: "%>
+  <%= form.date_field :day %>
+</p>
+
+<p>
+  <%= form.label :start_time, "Start Time: "%>
+  <%= form.time_field :start_time %>
+</p>
+
+
+<% current_user.friends.each do |friend| %>
+  <%= label :friends, friend.name %>
+  <%= check_box :friends, friend.id %>
+<% end %>
+
+<%= form.hidden_field :movie, value: @title %>
+
+<p>
+  <%= form.submit 'Create Party' %>
+</p>
+
+
+<% end %>

@@ -18,3 +18,10 @@
 
 # Ignore test coverage
 /coverage/*
+
+# Ignore environment files
+/.env
+.env
+
+# Ignore application configuration
+/config/application.yml

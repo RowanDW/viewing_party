@@ -39,7 +39,7 @@
 
   <section id="invited">
     <h4>Invitations: </h4>
-    <% if current_user.hosted_parties.empty? %>
+    <% if current_user.parties.empty? %>
       <p>You have not been invited to any parties</p>
     <% else %>
       <%= render partial: 'party_attributes', locals: {collection: current_user.parties} %>
