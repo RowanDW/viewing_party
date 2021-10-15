@@ -101,7 +101,7 @@ RSpec.describe "The dashboard page" do
       invite = Invite.create(party_id: party2.id, guest_id: @rowan.id)
       invite2 = Invite.create(party_id: party3.id, guest_id: @hanna.id)
       visit dashboard_path
-save_and_open_page
+
       within('#parties') do
         expect(page).to have_content("Viewing Parties:")
       end
