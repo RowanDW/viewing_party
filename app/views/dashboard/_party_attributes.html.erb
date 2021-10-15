@@ -1,0 +1,21 @@
+<% collection.each do |party| %>
+  <div id="party-<%= party.id %>">
+    <p>Movie: <%= link_to party.movie %></p>
+    <p>Day: <%= party.day.strftime('%B %d, %Y') %></p>
+    <p>Time: <%= party.start_time.strftime('%l:%M %P') %></p>
+    <p>Duration: <%= party.duration %> minutes</p>
+    <% if party.host == current_user %>
+      <p><b>Hosting</b></p>
+    <% else %>
+      <p>Host: <%= party.host.name %></p>
+    <% end %>
+    <p>Invited: </p>
+    <% party.guests.each do |guest| %>
+      <% if guest == current_user %>
+        <b><%= guest.name %></b>
+      <% else %>
+        <%= guest.name %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

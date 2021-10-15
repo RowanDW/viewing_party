@@ -131,8 +131,8 @@ RSpec.describe "The dashboard page" do
       within("#party-#{party.id}") do
         expect(page).to have_content(party.movie)
         expect(page).to have_content(party.duration)
-        expect(page).to have_content(party.day)
-        expect(page).to have_content(party.start_time)
+        expect(page).to have_content(party.day.strftime('%B %d, %Y'))
+        expect(page).to have_content(party.start_time.strftime('%l:%M %P'))
         expect(page).to have_content('Hosting')
         expect(page).to have_content(@kevin.name)
         expect(page).to have_content(@hanna.name)
@@ -141,8 +141,8 @@ RSpec.describe "The dashboard page" do
       within("#party-#{party2.id}") do
         expect(page).to have_content(party2.movie)
         expect(page).to have_content(party2.duration)
-        expect(page).to have_content(party2.day)
-        expect(page).to have_content(party2.start_time)
+        expect(page).to have_content(party2.day.strftime('%B %d, %Y'))
+        expect(page).to have_content(party2.start_time.strftime('%l:%M %P'))
         expect(page).to have_content("Host: #{@kevin.name}")
         expect(page).to have_content(@jules.name)
         expect(page).to have_content(@rowan.name)
@@ -167,6 +167,18 @@ RSpec.describe "The dashboard page" do
       end
 
       # Need to add link destinations
+    end
+
+    it "displays text if there are no parties" do
+      visit dashboard_path
+
+      within('#hosting') do
+        expect(page).to have_content("You are not hosting any parties")
+      end
+
+      within('#invited') do
+        expect(page).to have_content("You have not been invited to any parties")
+      end
     end
   end
 end

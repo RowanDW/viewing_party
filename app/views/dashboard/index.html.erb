@@ -30,41 +30,19 @@
   <h3>Viewing Parties: </h3>
   <section id="hosting">
     <h4>My Parties: </h4>
-    <% current_user.hosted_parties.each do |party| %>
-      <div id="party-<%= party.id %>">
-        <p>Movie: <%= link_to party.movie %></p> # TODO
-        <p>Day: <%= party.day %></p>
-        <p>Time: <%= party.start_time %></p>
-        <p>Duration: <%= party.duration %></p>
-        <p>Hosting</p>
-        <p>Invited: </p>
-        <% party.guests.each do |guest| %>
-          <%= guest.name %>
-        <% end %>
-        <br>
-      </div>
+    <% if current_user.hosted_parties.empty? %>
+      <p>You are not hosting any parties</p>
+    <% else %>
+      <%= render partial: 'party_attributes', locals: {collection: current_user.hosted_parties} %>
     <% end %>
   </section>
 
   <section id="invited">
     <h4>Invitations: </h4>
-    <% current_user.parties.each do |party| %>
-      <div id="party-<%= party.id %>">
-        <p>Movie: <%= link_to party.movie %></p> # TODO
-        <p>Day: <%= party.day %></p>
-        <p>Time: <%= party.start_time %></p>
-        <p>Duration: <%= party.duration %></p>
-        <p>Host: <%= party.host.name %></p>
-        <p>Invited: </p>
-        <% party.guests.each do |guest| %>
-          <% if guest == current_user %>
-            <b><%= guest.name %></b>
-          <% else %>
-            <%= guest.name %>
-          <% end %>
-        <% end %>
-        <br>
-      </div>
+    <% if current_user.hosted_parties.empty? %>
+      <p>You have not been invited to any parties</p>
+    <% else %>
+      <%= render partial: 'party_attributes', locals: {collection: current_user.parties} %>
     <% end %>
   </section>
 </div>
