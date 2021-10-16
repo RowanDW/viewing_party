@@ -149,7 +149,7 @@ RSpec.describe "The dashboard page" do
       end
     end
 
-    it "links each movie title to the movie show page" do
+    it "links each movie title to the movie show page", :vcr do
       party = Party.create(movie: 385128, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
       party2 = Party.create(movie: 51497, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
       invite = Invite.create(party_id: party.id, guest_id: @kevin.id)
@@ -165,16 +165,6 @@ RSpec.describe "The dashboard page" do
       end
 
       expect(current_path).to eq(movie_path(party.movie))
-
-      visit dashboard_path
-
-      within("#party-#{party2.id}") do
-        expect(page).to have_link(party2.title)
-        click_on party2.title
-      end
-
-      expect(current_path).to eq(movie_path(party2.movie))
-
     end
 
     it "displays text if there are no parties" do
