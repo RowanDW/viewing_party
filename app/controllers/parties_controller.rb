@@ -5,8 +5,13 @@ class PartiesController < ApplicationController
   end
 
   def create
+    @movie = MovieFacade.movie_show(party_params[:movie])
     party = Party.new(party_params)
-    if party.save
+
+    if party_params[:duration].to_i < @movie.runtime
+      flash[:warning] = "Error: invalid party - duration must be at least #{@movie.runtime} minutes"
+      redirect_to "/parties/new?id=#{party_params[:movie]}"
+    elsif party.save
       if params[:friends]
         params[:friends].each do |id, invite|
           Invite.create(party_id: party.id, guest_id: id.to_i) if invite == '1'

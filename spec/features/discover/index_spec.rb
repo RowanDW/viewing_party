@@ -1,27 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'the discover-index page' do
-  it 'has button to go to top rated movies' do
+  it 'has button to go to top rated movies', :vcr do
     visit discover_path
 
     expect(page).to have_button("Find Top Rated Movies")
     click_button("Find Top Rated Movies")
-    # expect(page).to have_current_path(movies_path)
-    expect(current_path).to eq(movies_path)
 
+    expect(current_path).to eq(movies_path)
+    expect(page).to have_content("Venom: Let There Be Carnage")
   end
 
-  xit 'has button to go to top rated movies' do
+  it 'has a movie search field', :vcr do
     visit discover_path
-
-    expect(page).to have_button("Find Movies")
-    # expect(find('form')).to have_content('Search')
-    # expect(page).to have_form("Search")
 
     fill_in :query, with: "Princess"
     click_on "Find Movies"
-    # click_button("Find Movies")
 
     expect(current_path).to eq(movies_path)
+    expect(page).to have_content("The Princess and the Frog")
   end
 end

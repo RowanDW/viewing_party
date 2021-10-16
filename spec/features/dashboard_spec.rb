@@ -94,7 +94,7 @@ RSpec.describe "The dashboard page" do
   end
 
   context 'parties section' do
-    it "displays all parties a user has been invited to and hosted" do
+    it "displays all parties a user has been invited to and hosted", :vcr do
       party = Party.create(movie: 385128, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
       party2 = Party.create(movie: 51497, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
       party3 = Party.create(movie: 9799, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
@@ -119,7 +119,7 @@ RSpec.describe "The dashboard page" do
       end
     end
 
-    it "displays all the attributes of each party" do
+    it "displays all the attributes of each party", :vcr do
       party = Party.create(movie: 385128, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
       party2 = Party.create(movie: 51497, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
       invite = Invite.create(party_id: party.id, guest_id: @kevin.id)
