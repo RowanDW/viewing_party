@@ -3,6 +3,5 @@ require 'rails_helper'
 RSpec.describe "The movie show page" do
   it "text" do
     visit movie_path(75780)
-    save_and_open_page
   end
 end

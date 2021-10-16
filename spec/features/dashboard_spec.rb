@@ -95,9 +95,9 @@ RSpec.describe "The dashboard page" do
 
   context 'parties section' do
     it "displays all parties a user has been invited to and hosted" do
-      party = Party.create(movie: 1, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
-      party2 = Party.create(movie: 2, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
-      party3 = Party.create(movie: 3, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+      party = Party.create(movie: 385128, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
+      party2 = Party.create(movie: 51497, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+      party3 = Party.create(movie: 9799, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
       invite = Invite.create(party_id: party2.id, guest_id: @rowan.id)
       invite2 = Invite.create(party_id: party3.id, guest_id: @hanna.id)
       visit dashboard_path
@@ -107,21 +107,21 @@ RSpec.describe "The dashboard page" do
       end
       within('#hosting') do
         expect(page).to have_content("My Parties:")
-        expect(page).to have_content(1)
-        # expect(page).to_not have_content(2)
-        # expect(page).to_not have_content(3)
+        expect(page).to have_content(party.title)
+        expect(page).to_not have_content(party2.title)
+        expect(page).to_not have_content(party3.title)
       end
       within('#invited') do
         expect(page).to have_content("Invitations:")
-        expect(page).to have_content(2)
-        # expect(page).to_not have_content(1)
-        # expect(page).to_not have_content(3)
+        expect(page).to have_content(party2.title)
+        expect(page).to_not have_content(party.title)
+        expect(page).to_not have_content(party3.title)
       end
     end
 
     it "displays all the attributes of each party" do
-      party = Party.create(movie: 1, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
-      party2 = Party.create(movie: 2, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+      party = Party.create(movie: 385128, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
+      party2 = Party.create(movie: 51497, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
       invite = Invite.create(party_id: party.id, guest_id: @kevin.id)
       invite2 = Invite.create(party_id: party.id, guest_id: @hanna.id)
       invite3 = Invite.create(party_id: party2.id, guest_id: @jules.id)
@@ -129,7 +129,7 @@ RSpec.describe "The dashboard page" do
       visit dashboard_path
 
       within("#party-#{party.id}") do
-        expect(page).to have_content(party.movie)
+        expect(page).to have_content(party.title)
         expect(page).to have_content(party.duration)
         expect(page).to have_content(party.day.strftime('%B %d, %Y'))
         expect(page).to have_content(party.start_time.strftime('%l:%M %P'))
@@ -139,7 +139,7 @@ RSpec.describe "The dashboard page" do
       end
 
       within("#party-#{party2.id}") do
-        expect(page).to have_content(party2.movie)
+        expect(page).to have_content(party2.title)
         expect(page).to have_content(party2.duration)
         expect(page).to have_content(party2.day.strftime('%B %d, %Y'))
         expect(page).to have_content(party2.start_time.strftime('%l:%M %P'))
@@ -149,24 +149,32 @@ RSpec.describe "The dashboard page" do
       end
     end
 
-    xit "links each movie title to the movie show page" do
-      party = Party.create(movie: "Fast & Furious", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
-      party2 = Party.create(movie: "F9", duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
+    it "links each movie title to the movie show page" do
+      party = Party.create(movie: 385128, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
+      party2 = Party.create(movie: 51497, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @kevin.id)
       invite = Invite.create(party_id: party.id, guest_id: @kevin.id)
       invite2 = Invite.create(party_id: party.id, guest_id: @hanna.id)
       invite3 = Invite.create(party_id: party2.id, guest_id: @jules.id)
       invite4 = Invite.create(party_id: party2.id, guest_id: @rowan.id)
+
       visit dashboard_path
 
       within("#party-#{party.id}") do
-        expect(page).to have_link(party.movie)
+        expect(page).to have_link(party.title)
+        click_on party.title
       end
+
+      expect(current_path).to eq(movie_path(party.movie))
+
+      visit dashboard_path
 
       within("#party-#{party2.id}") do
-        expect(page).to have_link(party2.movie)
+        expect(page).to have_link(party2.title)
+        click_on party2.title
       end
 
-      # Need to add link destinations
+      expect(current_path).to eq(movie_path(party2.movie))
+
     end
 
     it "displays text if there are no parties" do
