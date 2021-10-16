@@ -10,4 +10,9 @@ class Party < ApplicationRecord
 
   # has_many :users, through: :invites  #AS guests
   # belongs_to :user  #AS host
+
+  def title
+    movie = MovieFacade.movie_show(self.movie)
+    movie.title
+  end
 end

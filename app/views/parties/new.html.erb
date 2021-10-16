@@ -23,7 +23,8 @@
   <%= check_box :friends, friend.id %>
 <% end %>
 
-<%= form.hidden_field :movie, value: @title %>
+<%= form.hidden_field :movie, value: @movie.id %>
+<%= form.hidden_field :host_id, value: current_user.id %>
 
 <p>
   <%= form.submit 'Create Party' %>

@@ -5,7 +5,7 @@
 </div>
 
 <div id="friends">
-  <h3>My Friends:</h3>
+  <h2>My Friends:</h2>
   <section id='add-friend'>
     <%= form_with model: @friendship, local: true do |form| %>
       <%= form.label :email, "Friend's Email:" %>
@@ -27,9 +27,9 @@
 </div>
 
 <div id="parties">
-  <h3>Viewing Parties: </h3>
+  <h2>Viewing Parties: </h2>
   <section id="hosting">
-    <h4>My Parties: </h4>
+    <h3>My Parties: </h3>
     <% if current_user.hosted_parties.empty? %>
       <p>You are not hosting any parties</p>
     <% else %>
@@ -38,7 +38,7 @@
   </section>
 
   <section id="invited">
-    <h4>Invitations: </h4>
+    <h3>Invitations: </h3>
     <% if current_user.parties.empty? %>
       <p>You have not been invited to any parties</p>
     <% else %>

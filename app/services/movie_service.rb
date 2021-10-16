@@ -14,6 +14,16 @@ class MovieService
     movie_reviews = JSON.parse(response.body, symbolize_names: true)
   end
 
+  def self.top_movies(page)
+    response = conn.get("/3/discover/movie?page=#{page}")
+    movies = JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.search(query)
+    response = conn.get("/3/search/movie?query=#{query}")
+    movies = JSON.parse(response.body, symbolize_names: true)
+  end
+
   def self.conn
     Faraday.new(url: 'https://api.themoviedb.org/', params: {api_key: ENV['tmdb_api_key']}) do |faraday|
       faraday.adapter Faraday.default_adapter
