@@ -41,4 +41,14 @@ RSpec.describe "The movie index page" do
 
     expect(current_path).to eq(movie_path(580489))
   end
+
+  it "displays text if no search results", :vcr do
+    visit movies_path
+
+    fill_in :query, with: "hfjkdhfjskdfhjdks"
+    click_on "Find Movies"
+
+    expect(current_path).to eq(movies_path)
+    expect(page).to have_content("No movies found")
+  end
 end
