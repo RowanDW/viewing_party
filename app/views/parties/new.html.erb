@@ -1,34 +1,45 @@
-<h1>New Viewing Party</h1>
 
-<h3><%= @movie.title %></h3>
-<%= form_with model: @party, local: true do |form| %>
-<p>
-  <%= form.label :duration, "Duration of Party: "%>
-  <%= form.number_field :duration, value: @party.duration %> minutes
-</p>
+<div class="container mt-5">
+  <div class="d-flex justify-content-center" >
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        <div class="card-block text-center">
+          <h2 class="card-title"> New Viewing Party for: </h2>
+          <h3 class="card-title"><%= @movie.title %></h3>
+          <br>
+        </div>
+        <%= form_with model: @party, local: true do |form| %>
+          <div class="mb-3">
+            <%= form.label :duration, "Duration of Party (minutes):", class: "form-label" %><br>
+            <%= form.number_field :duration, value: @party.duration, class: "form-control", required: true %>
+          </div>
 
-<p>
-  <%= form.label :day, "Day: "%>
-  <%= form.date_field :day %>
-</p>
+          <div class="mb-3">
+            <%= form.label :day, "Day:", class: "form-label" %><br>
+            <%= form.date_field :day, class: "form-control", required: true %>
+          </div>
 
-<p>
-  <%= form.label :start_time, "Start Time: "%>
-  <%= form.time_field :start_time %>
-</p>
+          <div class="mb-3">
+            <%= form.label :start_time, "Start Time: ", class: "form-label" %><br>
+            <%= form.time_field :start_time, class: "form-control", required: true %>
+          </div>
 
-
-<% current_user.friends.each do |friend| %>
-  <%= label :friends, friend.name %>
-  <%= check_box :friends, friend.id %>
-<% end %>
-
-<%= form.hidden_field :movie, value: @movie.id %>
-<%= form.hidden_field :host_id, value: current_user.id %>
-
-<p>
-  <%= form.submit 'Create Party' %>
-</p>
-
-
-<% end %>
+          <p class="card-text">Invite:</p>
+            <% current_user.friends.each do |friend| %>
+            <div class="form-check form-check-inline">
+              <%= check_box :friends, friend.id, class: "form-check-input", required: true %>
+              <%= label :friends, friend.name, class: "form-check-label" %>
+            </div>
+            <% end %>
+            <br>
+          <%= form.hidden_field :movie, value: @movie.id %>
+          <%= form.hidden_field :host_id, value: current_user.id %>
+          <br>
+          <div class='btn-md text-center'>
+            <%= form.submit 'Create Party' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
