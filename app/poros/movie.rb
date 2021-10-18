@@ -6,7 +6,8 @@ class Movie
               :genres,
               :overview,
               :cast,
-              :reviews
+              :reviews,
+              :poster
 
 
   def initialize(main_attributes, cast_attributes, rev_attributes)
@@ -18,6 +19,7 @@ class Movie
     @overview       = main_attributes[:overview]
     @cast           = format_cast(cast_attributes[:cast])
     @reviews        = format_reviews(rev_attributes[:results])
+    @poster         = add_base_url(main_attributes[:poster_path])
   end
 
   def format_genres(data)
@@ -37,5 +39,9 @@ class Movie
     reviews = data.map do |rev|
       {author: rev[:author], content: rev[:content]}
     end
+  end
+
+  def add_base_url(path)
+    "https://image.tmdb.org/t/p/w342/" + path
   end
 end

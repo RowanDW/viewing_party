@@ -1,27 +1,27 @@
 class MovieService
   def self.movie_details(movie_id)
     response = conn.get("/3/movie/#{movie_id}")
-    movie_details = JSON.parse(response.body, symbolize_names: true)
+    parse_json(response)
   end
 
   def self.movie_cast(movie_id)
     response = conn.get("/3/movie/#{movie_id}/credits")
-    movie_cast = JSON.parse(response.body, symbolize_names: true)
+    parse_json(response)
   end
 
   def self.movie_reviews(movie_id)
     response = conn.get("/3/movie/#{movie_id}/reviews")
-    movie_reviews = JSON.parse(response.body, symbolize_names: true)
+    parse_json(response)
   end
 
   def self.top_movies(page)
     response = conn.get("/3/discover/movie?page=#{page}")
-    movies = JSON.parse(response.body, symbolize_names: true)
+    parse_json(response)
   end
 
   def self.search(query)
     response = conn.get("/3/search/movie?query=#{query}")
-    movies = JSON.parse(response.body, symbolize_names: true)
+    parse_json(response)
   end
 
   def self.conn
@@ -29,4 +29,8 @@ class MovieService
       faraday.adapter Faraday.default_adapter
     end
   end
+
+  def self.parse_json(response)
+      JSON.parse(response.body, symbolize_names: true)
+    end
 end
