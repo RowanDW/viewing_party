@@ -16,22 +16,17 @@ RSpec.describe Party, type: :model do
     it { should validate_presence_of(:host_id) }
   end
 
-  # before(:each) do
-  # end
-  #
-  # describe 'class methods' do
-  #   describe '#name' do
-  #     it 'returns ' do
-  #       expect(Class.name).to eq()
-  #     end
-  #   end
-  # end
-  #
-  # describe 'instance methods' do
-  #   describe '._name' do
-  #     it 'returns ' do
-  #       expect(@var._name).to eq()
-  #     end
-  #   end
-  # end
+  before(:each) do
+    @rowan = User.create(name: 'Rowan', email: "rowan@test.com", password: "test")
+    @party = Party.create(movie: 385128, duration: 180, day: '2000-01-01', start_time: '05:54:42', host_id: @rowan.id)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@rowan)
+  end
+
+  describe 'instance methods' do
+    describe '.title' do
+      it 'returns the title of the movie', :vcr do
+        expect(@party.title).to eq("F9")
+      end
+    end
+  end
 end
