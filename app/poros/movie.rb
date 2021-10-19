@@ -19,7 +19,7 @@ class Movie
     @overview       = main_info[:overview]
     @cast           = format_cast(cast_info[:cast])
     @reviews        = format_reviews(rev_info[:results])
-    @poster         = add_base_url(main_info[:poster_path])
+    # @poster         = add_base_url(main_info[:poster_path])
   end
 
   def format_genres(data)
@@ -41,7 +41,7 @@ class Movie
     end
   end
 
-  def add_base_url(path)
-    "https://image.tmdb.org/t/p/w342/" + path
-  end
+  # def add_base_url(path)
+  #   "https://image.tmdb.org/t/p/w342/" + path
+  # end
 end

@@ -1,5 +1,5 @@
 class MovieService
-  def self.search(query)
+  def self.search_title(query)
     response = conn.get("/3/search/movie?query=#{query}")
     parse_json(response)
   end

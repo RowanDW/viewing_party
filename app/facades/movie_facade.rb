@@ -1,9 +1,9 @@
 class MovieFacade
   def self.movie_show(movie_id)
-    movie_details = MovieService.movie_details(movie_id)
-    movie_cast = MovieService.movie_cast(movie_id)
-    movie_reviews = MovieService.movie_reviews(movie_id)
-    @movie = Movie.new(movie_details, movie_cast, movie_reviews)
+    details = MovieService.details(movie_id)
+    cast = MovieService.cast(movie_id)
+    reviews = MovieService.reviews(movie_id)
+    @movie = Movie.new(details, cast, reviews)
   end
 
   def self.top_forty
@@ -12,9 +12,9 @@ class MovieFacade
     movies = pg1[:results].concat(pg2[:results])
   end
 
-  def self.search(query)
+  def self.search_title(query)
     query.gsub!(" ", "+")
-    movies = MovieService.search(query)
+    movies = MovieService.search_title(query)
     movies[:results]
   end
 end

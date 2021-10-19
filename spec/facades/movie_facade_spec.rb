@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'MovieFacade' do
   describe 'class methods' do
-    describe '::forty_top_rated_movies' do
-      it 'returns list of top forty movies' do
-        stub_forty_top_rated_movies
-        movies = MovieFacade.forty_top_rated_movies
+    describe '::top_forty' do
+      xit 'returns list of top forty movies' do
+        stub_top_forty
+        movies = MovieFacade.top_forty
 
         expect(movies).to be_a(Array)
         expect(movies.count).to eq(40)
@@ -13,9 +13,9 @@ RSpec.describe 'MovieFacade' do
       end
     end
 
-    describe '::search_movie_title' do
-      it 'returns all movies related to query' do
-        stub_search_movie_by_title 
+    describe '::search_title' do
+      xit 'returns all movies related to query' do
+        stub_search_by_title
         movies = MovieFacade.search_movie_title("Cruella")
 
         expect(movies).to be_a(Array)
@@ -24,11 +24,11 @@ RSpec.describe 'MovieFacade' do
       end
     end
 
-    describe '::movie_details_by_id' do
-      it 'returns all movies and details' do
-        stub_movie_details_by_id
-        movie = MovieFacade.movie_details_by_id(337404)
-        
+    describe '::movie_show' do
+      xit 'returns all movies and details' do
+        stub_movie_show
+        movie = MovieFacade.movie_show(337404)
+
         expect(movie).to be_a(MovieDetails)
       end
     end
