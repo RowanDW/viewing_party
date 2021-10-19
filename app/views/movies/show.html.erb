@@ -1,10 +1,9 @@
 <h1><%= @movie.title %></h1>
-<img src="<%= @movie.poster %>" class="rounded float-left" alt="<%= @movie.title %>">
 <div class="row">
     <div class="col">
       <%= button_to 'New Viewing Party', new_party_path, params: {id: @movie.id}, method: :get %>
-      <h3><%= @movie.runtime %> minutes</h3>
-      <h3><%= @movie.overview %></h3>
+      <h3><%= @movie.runtime %> min.</h3><br/>
+      <p>SUMMARY: <%= @movie.overview %></p>
       <h3>Genres:
       <% @movie.genres.each do |genre| %>
         <%= genre %>
@@ -16,7 +15,8 @@
       <h3>Cast:</h3>
       <% @movie.cast.each do |cast| %>
         <p><%= cast[:actor] %> as <%= cast[:character] %></p>
-      <% end %>
+      <% end %><br/>
+
     </div>
   </div>
   <h3><%= @movie.reviews.size %> Reviews :</h3>
