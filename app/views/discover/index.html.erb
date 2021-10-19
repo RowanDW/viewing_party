@@ -1,8 +1,8 @@
-<%= button_to "Find Top Rated Movies",  movies_path, method: :get %>
+<%= button_to "Find Top Rated Movies",  movies_path, method: :get %><br/>
 
-<h2>OR</h2><br/>
+<h3>OR</h3><br/>
 
-<%= form_with url: discover_path, method: :post, local: true do |f| %>
+<%= form_with url: movies_path, method: :get, local: true do |f| %>
   <%= f.text_field :query, label: "Search By Title" %><br/><br/>
 
   <%= f.submit 'Find Movies' %>
