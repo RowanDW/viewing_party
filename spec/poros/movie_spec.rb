@@ -55,16 +55,16 @@ RSpec.describe Movie do
   end
 
 
-  it ".format_genres" do
+  it ".list_genres" do
     genres = {"genres": [
       {id: 28, name: "Action"},
       {id: 80, name: "Crime"},
       {id: 53, name: "Thriller"}
     ]}
-    expect(@movie.format_genres(genres[:genres])).to eq(["Action", "Crime", "Thriller"])
+    expect(@movie.list_genres(genres[:genres])).to eq(["Action", "Crime", "Thriller"])
   end
 
-  it ".format_cast" do
+  it ".list_cast" do
     cast = {
       "id": 385128,
       "cast": [
@@ -238,7 +238,7 @@ RSpec.describe Movie do
       {actor: "Helen Mirren", character: "Magdalene 'Queenie' Shaw"}
     ]
     # Only add first 10
-    expect(@movie.format_cast(cast[:cast])).to eq(results)
+    expect(@movie.list_cast(cast[:cast])).to eq(results)
   end
 
   it ".add_reviews" do
@@ -289,6 +289,6 @@ RSpec.describe Movie do
         content: "Sure no one watches FF series expecting amazing plot, but surely it is now pushing the boundaries of ridiculous. I did enjoy the previous films just as silly action flicks but this one had me sighing in disbelief midway through."
       }
     ]
-    expect(@movie.format_reviews(reviews[:results])).to eq(results)
+    expect(@movie.list_reviews(reviews[:results])).to eq(results)
   end
 end
