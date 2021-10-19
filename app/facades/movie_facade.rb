@@ -10,12 +10,17 @@ class MovieFacade
   def self.top_movies
     pg1 = MovieService.top_movies(1)
     pg2 = MovieService.top_movies(2)
-    pg1[:results].concat(pg2[:results])
+    movies = pg1[:results].concat(pg2[:results])
+    movies.map do |movie|
+      MovieLite.new(movie)
+    end
   end
 
   def self.search(query)
     query.gsub!(' ', '+')
     movies = MovieService.search(query)
-    movies[:results]
+    movies[:results].map do |movie|
+      MovieLite.new(movie)
+    end
   end
 end
