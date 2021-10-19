@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'the discover-index page' do
-  it 'has button to go to top rated movies' do
+  before :each do
+    @rowan = User.create(name: 'Rowan', email: "rowan@test.com", password: "test")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@rowan)
+  end
+  it 'has button to go to top rated movies', :vcr do
     visit discover_path
 
     expect(page).to have_button("Find Top Rated Movies")

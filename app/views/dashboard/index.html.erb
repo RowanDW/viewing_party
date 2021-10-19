@@ -1,48 +1,68 @@
-<h1>Welcome <%= current_user.name %>!</h1>
+<div class="container mt-4">
 
-<div id='discover'>
-  <%= button_to 'Discover Movies', discover_path, method: :get %>
-</div>
+  <h1 class="text-center">Welcome <%= current_user.name %>!</h1>
+  <br>
+  <div id='discover' class="d-flex justify-content-center">
+    <%= button_to 'Discover Movies', discover_path, method: :get, class: "btn btn-outline-dark" %>
+  </div>
+  <br>
+  <div id="friends">
+    <h2>My Friends</h2>
+    <hr>
+    <section id='add-friend'>
+      <%= form_with model: @friendship, local: true do |form| %>
+      <div class=" mb-3" style="display: inline-block; float: left;">
 
-<div id="friends">
-  <h3>My Friends:</h3>
-  <section id='add-friend'>
-    <%= form_with model: @friendship, local: true do |form| %>
-      <%= form.label :email, "Friend's Email:" %>
-      <%= form.text_field :email %>
-
-      <%= form.submit 'Add Friend' %>
-    <% end %>
-  </section>
-
-  <section id='added-friends'>
-    <% if current_user.friends.size > 0 %>
-      <% current_user.friends.each do |friend| %>
-        <p><%= friend.name %></p>
+        <%= form.text_field :email, placeholder: "friend's email", class:"form-control" %>
+        </div>
+        <%= form.submit 'Add Friend', class: "btn btn-outline-dark mx-2" %>
       <% end %>
-    <% else %>
-      <p>You currently have no friends</p>
-    <% end %>
-  </section>
-</div>
+    </section>
+    <br>
+    <section id='added-friends'>
+      <% if current_user.friends.size > 0 %>
 
-<div id="parties">
-  <h3>Viewing Parties: </h3>
-  <section id="hosting">
-    <h4>My Parties: </h4>
-    <% if current_user.hosted_parties.empty? %>
-      <p>You are not hosting any parties</p>
-    <% else %>
-      <%= render partial: 'party_attributes', locals: {collection: current_user.hosted_parties} %>
-    <% end %>
-  </section>
+        <%friends =  current_user.friends.map do |friend| %>
+          <%friend.name%>
+        <% end %>
+        <h5><%= friends.to_sentence %></h5>
 
-  <section id="invited">
-    <h4>Invitations: </h4>
-    <% if current_user.hosted_parties.empty? %>
-      <p>You have not been invited to any parties</p>
-    <% else %>
-      <%= render partial: 'party_attributes', locals: {collection: current_user.parties} %>
-    <% end %>
-  </section>
+      <% else %>
+        <p>You currently have no friends, add one above!</p>
+      <% end %>
+    </section>
+  </div>
+  <br>
+  <br>
+
+  <div id="parties">
+    <h2>Viewing Parties </h2>
+    <hr>
+    <section id="hosting">
+      <h3>My Parties: </h3>
+      <% if current_user.hosted_parties.empty? %>
+        <p>You are not hosting any parties</p>
+      <% else %>
+        <div class="card-deck">
+          <div class="row">
+            <%= render partial: 'party_attributes', locals: {collection: current_user.hosted_parties} %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+    <br>
+    <section id="invited">
+      <h3>Invitations: </h3>
+      <% if current_user.parties.empty? %>
+        <p>You have not been invited to any parties</p>
+      <% else %>
+        <div class="card-deck">
+          <div class="row">
+            <%= render partial: 'party_attributes', locals: {collection: current_user.parties} %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  </div>
 </div>
+<br>

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "The movie show page" do
+  before :each do
+    @rowan = User.create(name: 'Rowan', email: "rowan@test.com", password: "test")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@rowan)
+  end
   it "displays all the attributes of a movie", :vcr do
     visit movie_path(385128)
 
