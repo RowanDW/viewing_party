@@ -4,6 +4,5 @@ class PartiesController < ApplicationController
     @party = Party.new(duration: @movie.runtime)
   end
 
-  def create
-  end
+  def create; end
 end
