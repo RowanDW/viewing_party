@@ -35,7 +35,7 @@ RSpec.describe Movie do
     expect(@movie.overview).to eq("Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.")
     expect(@movie.cast).to eq(cast_results)
     expect(@movie.reviews).to eq(rev_results)
-    expect(@movie.poster).to eq("https://image.tmdb.org/t/p/w342//bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg")
+    expect(@movie.poster).to eq("https://image.tmdb.org/t/p/w500/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg")
   end
 
 

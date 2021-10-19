@@ -35,8 +35,8 @@
           <%= form.hidden_field :movie, value: @movie.id %>
           <%= form.hidden_field :host_id, value: current_user.id %>
           <br>
-          <div class='btn-md text-center'>
-            <%= form.submit 'Create Party' %>
+          <div class='text-center'>
+            <%= form.submit 'Create Party', class: "btn btn-outline-dark" %>
           </div>
         <% end %>
       </div>

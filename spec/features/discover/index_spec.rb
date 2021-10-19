@@ -19,7 +19,7 @@ RSpec.describe 'the discover-index page' do
     visit discover_path
 
     fill_in :query, with: "Princess"
-    click_on "Find Movies"
+    click_on "Search"
 
     expect(current_path).to eq(movies_path)
     expect(page).to have_content("The Princess and the Frog")

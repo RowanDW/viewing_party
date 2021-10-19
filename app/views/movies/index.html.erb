@@ -1,14 +1,14 @@
 <div class="container mt-4">
   <h1 class= "text-center">Movies Index</h1><br/>
   <div class=" d-flex justify-content-center">
-    <%= button_to "Find Top Rated Movies",  movies_path, method: :get %>
-    <h4 class="mx-3"> OR </h4>
+    <%= button_to "Find Top Rated Movies",  movies_path, method: :get, class: "btn btn-outline-dark" %>
+    <h4 class="mx-3 pt-1"> OR </h4>
     <%= form_with url: movies_path, method: :get, local: true, class: "form-inline" do |f| %>
       <div class=" mb-3" style="display: inline-block; float: left;">
-        <%= f.text_field :query, placeholder: "Find Movies", class:"form-control", required: true %><br/><br/>
+        <%= f.text_field :query, placeholder: "Find By Title", class:"form-control", required: true %><br/><br/>
       </div>
-      <div class="m-1" style="display: inline-block; float: left;">
-        <%= f.submit 'Search', class: "btn-default" %>
+      <div class="mb-1 mx-1" style="display: inline-block; float: left;">
+        <%= f.submit 'Search',  class: "btn btn-outline-dark" %>
       </div>
     <% end %>
   </div>

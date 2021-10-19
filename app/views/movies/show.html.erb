@@ -1,27 +1,29 @@
 <div class="container mt-5">
-
-  <h1><%= @movie.title %></h1>
-  <img src="<%= @movie.poster %>" class="rounded float-left" alt="<%= @movie.title %>">
-  <div class="row">
-      <div class="col">
-        <%= button_to 'New Viewing Party', new_party_path, params: {id: @movie.id}, method: :get %>
-        <h3><%= @movie.runtime %> minutes</h3>
-        <h3><%= @movie.overview %></h3>
-        <h3>Genres:
-        <% @movie.genres.each do |genre| %>
-          <%= genre %>
-        <% end %></h3>
-        <h3>Average Rating: <%= @movie.vote_average %></h3>
-      </div>
-      <div class="col">
-        <h3>Cast:</h3>
-        <% @movie.cast.each do |cast| %>
-          <p><%= cast[:actor] %> as <%= cast[:character] %></p>
-        <% end %>
-      </div>
+  <div class="d-flex">
+    <div class="flex-shrink-0">
+      <img src="<%= @movie.poster %>" style="margin-right: 1rem;" alt="<%= @movie.title %> poster">
     </div>
-    <h3><%= @movie.reviews.size %> Reviews :</h3>
-    <% @movie.reviews.each do |rev| %>
+    <div class="flex-grow-1 ms-3">
+      <h1 class><%= @movie.title %> </h1>
+      <hr>
+      <p style="font-size: 18px;"><%= @movie.overview %></p>
+      <%= button_to 'New Viewing Party', new_party_path, params: {id: @movie.id}, method: :get, class: "btn btn-outline-dark" %>
+      <br>
+      <p>Genres:
+      <% @movie.genres.each do |genre| %>
+        <%= genre %> &nbsp;&nbsp;
+      <% end %></p>
+      <p>Runtime: <%= @movie.runtime %> minutes</p>
+      <p>Average Rating: <%= @movie.vote_average %></p>
+      <h4>Cast:</h4>
+      <% @movie.cast.each do |cast| %>
+        <p style="margin-top: 8px; margin-bottom: 8px"><%= cast[:actor] %> as <%= cast[:character] %></p>
+      <% end %>
+    </div>
+  </div>
+<br>
+  <h3><%= @movie.reviews.size %> Reviews :</h3>
+  <% @movie.reviews.each do |rev| %>
     <p><b><%= rev[:author] %></b> - <%= rev[:content] %></p>
-    <% end %>
+  <% end %>
 </div>

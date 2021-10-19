@@ -3,8 +3,8 @@
 
   <h1 class="text-center">Welcome <%= current_user.name %>!</h1>
   <br>
-  <div id='discover' class="d-flex justify-content-center btn-lg">
-    <%= button_to 'Discover Movies', discover_path, method: :get %>
+  <div id='discover' class="d-flex justify-content-center">
+    <%= button_to 'Discover Movies', discover_path, method: :get, class: "btn btn-outline-dark" %>
   </div>
   <br>
   <div id="friends">
@@ -12,18 +12,22 @@
     <hr>
     <section id='add-friend'>
       <%= form_with model: @friendship, local: true do |form| %>
-        <%= form.label :email, "Add a new friend: " %>
-        <%= form.text_field :email, placeholder: "friend's email" %>
+      <div class=" mb-3" style="display: inline-block; float: left;">
 
-        <%= form.submit 'Add Friend' %>
+        <%= form.text_field :email, placeholder: "friend's email", class:"form-control" %>
+        </div>
+        <%= form.submit 'Add Friend', class: "btn btn-outline-dark mx-2" %>
       <% end %>
     </section>
     <br>
     <section id='added-friends'>
       <% if current_user.friends.size > 0 %>
-        <% current_user.friends.each do |friend| %>
-          <p><%= friend.name %></p>
+
+        <%friends =  current_user.friends.map do |friend| %>
+          <%friend.name%>
         <% end %>
+        <h5><%= friends.to_sentence %></h5>
+
       <% else %>
         <p>You currently have no friends, add one above!</p>
       <% end %>

@@ -19,6 +19,7 @@ class Movie
     @cast           = format_cast(cast_attributes[:cast])
     @reviews        = format_reviews(rev_attributes[:results])
     @poster         = add_base_url(main_attributes[:poster_path])
+    
   end
 
   def format_genres(data)
@@ -41,6 +42,6 @@ class Movie
   end
 
   def add_base_url(path)
-    "https://image.tmdb.org/t/p/w342/#{path}"
+    "https://image.tmdb.org/t/p/w500#{path}"
   end
 end

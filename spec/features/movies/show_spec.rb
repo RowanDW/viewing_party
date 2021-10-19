@@ -11,7 +11,7 @@ RSpec.describe "The movie show page" do
     expect(page).to have_content("F9")
     expect(page).to have_content("143 minutes")
     expect(page).to have_content("Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.")
-    expect(page).to have_content("Genres: Action Crime Thriller")
+    expect(page).to have_content("Genres: Action    Crime    Thriller")
     expect(page).to have_content("Average Rating: 7.4")
     expect(page).to have_content("Vin Diesel as Dominic Toretto")
     expect(page).to have_content("Michelle Rodriguez as Letty Ortiz")

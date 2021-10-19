@@ -1,9 +1,9 @@
 <% collection.each do |party| %>
 <div class="col-3 d-flex  mb-3">
-  <div class="card" id="party-<%= party.id %>" style="width: 18rem;">
+  <div class="card" id="party-<%= party.id %>" style="width: 18rem;background: #cbd6e0">
     <div class="card-header text-center" style="height: 4rem;">
-      <div style="vertical-align: middle;">      
-        <%= link_to party.title, movie_path(party.movie) %>
+      <div style="vertical-align: middle;">
+        <%= link_to party.title, movie_path(party.movie), class: "link-dark", style: "text-decoration: none; font-weight: bold;" %>
       </div>
     </div>
       <ul class="list-group list-group-flush">
