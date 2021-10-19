@@ -1,7 +1,7 @@
 class MovieFacade
   def self.movie_search(title)
-    data = MovieService.movie_details
-
+    data = MovieService.search_title(title)
+  require "pry"; binding.pry
     details = data[:results]
   end
 

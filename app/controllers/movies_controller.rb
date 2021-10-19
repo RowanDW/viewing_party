@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movie = MovieFacade.movie_search(params[:query])
+    @movie = MovieFacade.search_title(params[:query])
   end
 
 
