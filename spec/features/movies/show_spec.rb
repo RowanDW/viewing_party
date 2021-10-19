@@ -5,7 +5,7 @@ RSpec.describe "The movie show page" do
     visit movie_path(385128)
 
     expect(page).to have_content("F9")
-    expect(page).to have_content("143 minutes")
+    expect(page).to have_content("143 min.")
     expect(page).to have_content("Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.")
     expect(page).to have_content("Genres: Action Crime Thriller")
     expect(page).to have_content("Average Rating: 7.4")
