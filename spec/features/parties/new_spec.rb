@@ -28,9 +28,9 @@ RSpec.describe 'the new parties page' do
 
     within('#hosting') do
       expect(page).to have_content('F9')
-      expect(page).to have_content('Day: December 12, 2021')
-      expect(page).to have_content('Time: 6:30 pm')
-      expect(page).to have_content('Duration: 143 minutes')
+      expect(page).to have_content('December 12, 2021')
+      expect(page).to have_content('6:30 pm')
+      expect(page).to have_content('143 minutes')
       expect(page).to have_content('Hosting')
     end
   end

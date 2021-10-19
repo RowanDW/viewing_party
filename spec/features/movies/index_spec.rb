@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "The movie index page" do
+  before :each do
+    @rowan = User.create(name: 'Rowan', email: "rowan@test.com", password: "test")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@rowan)
+  end
   it "starts out showing the top 40 movies", :vcr do
     visit movies_path
 
@@ -25,7 +29,7 @@ RSpec.describe "The movie index page" do
     visit movies_path
 
     fill_in :query, with: "Princess"
-    click_on "Find Movies"
+    click_on "Search"
 
     expect(current_path).to eq(movies_path)
     expect(page).to have_content("Barbie: Princess Adventure")
@@ -46,7 +50,7 @@ RSpec.describe "The movie index page" do
     visit movies_path
 
     fill_in :query, with: "hfjkdhfjskdfhjdks"
-    click_on "Find Movies"
+    click_on "Search"
 
     expect(current_path).to eq(movies_path)
     expect(page).to have_content("No movies found")

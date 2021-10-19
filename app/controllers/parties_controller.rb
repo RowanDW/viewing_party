@@ -17,7 +17,7 @@ class PartiesController < ApplicationController
           Invite.create(party_id: party.id, guest_id: id.to_i) if invite == '1'
         end
       end
-      flash[:success] = "Party successfully created!"
+      flash[:success] = 'Party successfully created!'
       redirect_to dashboard_path
     else
       flash[:warning] = 'Error: invalid party'
@@ -25,7 +25,7 @@ class PartiesController < ApplicationController
     end
   end
 
-private
+  private
 
   def party_params
     params.require(:party).permit(:movie, :duration, :day, :start_time, :host_id)

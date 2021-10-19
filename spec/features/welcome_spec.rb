@@ -6,7 +6,8 @@ RSpec.describe "The welcome page" do
 
     within('#welcome') do
       expect(page).to have_content("Welcome to Viewing Party")
-      expect(page).to have_content("Explore movies and create a viewing party event for you and your friends to watch a movie together")
+      expect(page).to have_content("Explore movies!")
+      expect(page).to have_content("Create a viewing party event for you and your friends to watch a movie together")
     end
   end
 
@@ -32,7 +33,7 @@ RSpec.describe "The welcome page" do
 
     expect(current_path).to eq(dashboard_path)
 
-    expect(page).to have_content("Welcome, #{user.name}")
+    expect(page).to have_content("Welcome #{user.name}")
   end
 
   it "cannot log in with bad credentials" do
@@ -65,7 +66,7 @@ RSpec.describe "The welcome page" do
 
     visit root_path
     expect(page).to_not have_link("New to Viewing Party? Register Here")
-    expect(page).to have_link("Log Out")
+    expect(page).to have_button("Log Out")
 
     click_on "Log Out"
 

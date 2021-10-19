@@ -2,46 +2,29 @@ require 'rails_helper'
 
 RSpec.describe Movie do
   before :each do
-    main_attrs = {
-      "genres": [
-        {"id": 28, "name": "Action"},
-        {"id": 80, "name": "Crime"},
-        {"id": 53, "name": "Thriller"}
-      ],
-      "id": 385128,
-      "overview": "Cars go fast and explode",
-      "runtime": 143,
-      "title": "F9",
-      "vote_average": 7.4
-    }
+    main_attrs = File.read("spec/fixtures/movie_details.json")
+    cast_attrs = File.read("spec/fixtures/movie_cast.json")
+    review_attrs = File.read("spec/fixtures/movie_reviews.json")
 
-    cast_attrs =  {
-      "cast": [
-          {"name": "Vin Diesel", "character": "Dominic Toretto"},
-          {"name": "Michelle Rodriguez","character": "Letty Ortiz"}
-       ]
-    }
 
-    review_attrs = {
-      "results": [
-        {author: "Anon1", content: "Meh"},
-        {author: "Anon2", content: "Amazing"}
-      ]
-    }
-    @movie = Movie.new(main_attrs, cast_attrs, review_attrs)
+    @movie = Movie.new(JSON.parse(main_attrs, symbolize_names: true), JSON.parse(cast_attrs, symbolize_names: true), JSON.parse(review_attrs, symbolize_names: true))
   end
 
   it "exists and has attributes" do
-
     cast_results = [
-        {"actor": "Vin Diesel", "character": "Dominic Toretto"},
-        {"actor": "Michelle Rodriguez","character": "Letty Ortiz"}
-     ]
+      {:actor=>"Vin Diesel", :character=>"Dominic Toretto"},
+      {:actor=>"Michelle Rodriguez", :character=>"Letty Ortiz"},
+      {:actor=>"Tyrese Gibson", :character=>"Roman Pearce"},
+      {:actor=>"Ludacris", :character=>"Tej Parker"},
+      {:actor=>"John Cena", :character=>"Jakob Toretto"},
+      {:actor=>"Nathalie Emmanuel", :character=>"Ramsey"},
+      {:actor=>"Jordana Brewster", :character=>"Mia Toretto"},
+      {:actor=>"Sung Kang", :character=>"Han Lue"},
+      {:actor=>"Michael Rooker", :character=>"Buddy"},
+      {:actor=>"Helen Mirren", :character=>"Magdalene 'Queenie' Shaw"}]
 
-    rev_results = [
-      {author: "Anon1", content: "Meh"},
-      {author: "Anon2", content: "Amazing"}
-    ]
+    revs = File.read("spec/fixtures/reviews_results.rb")
+    rev_results = eval(revs)
 
     expect(@movie).to be_a Movie
     expect(@movie.id).to eq(385128)
@@ -49,9 +32,10 @@ RSpec.describe Movie do
     expect(@movie.vote_average).to eq(7.4)
     expect(@movie.runtime).to eq(143)
     expect(@movie.genres).to eq(["Action", "Crime", "Thriller"])
-    expect(@movie.overview).to eq("Cars go fast and explode")
+    expect(@movie.overview).to eq("Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.")
     expect(@movie.cast).to eq(cast_results)
     expect(@movie.reviews).to eq(rev_results)
+    expect(@movie.poster).to eq("https://image.tmdb.org/t/p/w342//bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg")
   end
 
 

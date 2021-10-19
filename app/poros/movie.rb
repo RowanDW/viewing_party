@@ -9,7 +9,6 @@ class Movie
               :reviews,
               :poster
 
-
   def initialize(main_attributes, cast_attributes, rev_attributes)
     @id             = main_attributes[:id]
     @title          = main_attributes[:title]
@@ -23,25 +22,25 @@ class Movie
   end
 
   def format_genres(data)
-    genres = data.map do |genre|
+    data.map do |genre|
       genre[:name]
     end
   end
 
   def format_cast(data)
     cast = data.map do |actor|
-      {actor: actor[:name], character: actor[:character]}
+      { actor: actor[:name], character: actor[:character] }
     end
-    cast = cast.slice(0, 10)
+    cast.slice(0, 10)
   end
 
   def format_reviews(data)
-    reviews = data.map do |rev|
-      {author: rev[:author], content: rev[:content]}
+    data.map do |rev|
+      { author: rev[:author], content: rev[:content] }
     end
   end
 
   def add_base_url(path)
-    "https://image.tmdb.org/t/p/w342/" + path
+    "https://image.tmdb.org/t/p/w342/#{path}"
   end
 end

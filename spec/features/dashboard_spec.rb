@@ -33,7 +33,7 @@ RSpec.describe "The dashboard page" do
 
       visit dashboard_path
 
-      expect(page).to have_content("My Friends:")
+      expect(page).to have_content("My Friends")
 
       within("#added-friends") do
        expect(page).to have_content(@kevin.name)
@@ -103,7 +103,7 @@ RSpec.describe "The dashboard page" do
       visit dashboard_path
 
       within('#parties') do
-        expect(page).to have_content("Viewing Parties:")
+        expect(page).to have_content("Viewing Parties")
       end
       within('#hosting') do
         expect(page).to have_content("My Parties:")

@@ -10,6 +10,10 @@
 
   <body>
     <main>
+      <% if controller.controller_name != "welcome" && controller.controller_name != "users" %>
+        <%= render partial: 'shared/navbar' %>
+      <% end %>
+
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: name %>
       <% end %>

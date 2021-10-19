@@ -1,22 +1,32 @@
 <% collection.each do |party| %>
-  <div id="party-<%= party.id %>">
-    <h4>Movie: <%= link_to party.title, movie_path(party.movie) %></h4>
-    <p>Day: <%= party.day.strftime('%B %d, %Y') %></p>
-    <p>Time: <%= party.start_time.strftime('%l:%M %P') %></p>
-    <p>Duration: <%= party.duration %> minutes</p>
-    <% if party.host == current_user %>
-      <p><b>Hosting</b></p>
-    <% else %>
-      <p>Host: <%= party.host.name %></p>
-    <% end %>
-    <p>Invited: </p>
-    <% party.guests.each do |guest| %>
-      <% if guest == current_user %>
-        <b><%= guest.name %></b>
-      <% else %>
-        <%= guest.name %>
-      <% end %>
-    <% end %>
+<div class="col-3 d-flex  mb-3">
+  <div class="card" id="party-<%= party.id %>" style="width: 18rem;">
+    <div class="card-header text-center" style="height: 4rem;">
+      <div style="vertical-align: middle;">      
+        <%= link_to party.title, movie_path(party.movie) %>
+      </div>
+    </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center"><%= party.day.strftime('%B %d, %Y') %></li>
+        <li class="list-group-item text-center"><%= party.start_time.strftime('%l:%M %P') %></li>
+        <li class="list-group-item text-center"><%= party.duration %> minutes</li>
+        <li class="list-group-item text-center">
+          <% if party.host == current_user %>
+            <b>Hosting</b>
+          <% else %>
+            Host: <%= party.host.name %>
+          <% end %>
+        </li>
+        <li class="list-group-item text-center">Invited:
+          <% party.guests.each do |guest| %>
+            <% if guest == current_user %>
+              <b><%= guest.name %></b>
+            <% else %>
+              <%= guest.name %>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
   </div>
-  <br>
+</div>
 <% end %>
