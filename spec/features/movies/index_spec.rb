@@ -46,6 +46,14 @@ RSpec.describe "The movie index page" do
     expect(current_path).to eq(movie_path(580489))
   end
 
+  it "displays the vote average of each movie", :vcr do
+    visit movies_path
+
+    within("#movie-335983")
+
+    expect(page).to have_content('Rating: 6.8')
+  end
+
   it "displays text if no search results", :vcr do
     visit movies_path
 
