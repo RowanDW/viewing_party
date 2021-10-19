@@ -9,11 +9,11 @@ class MovieFacade
   def self.top_forty
     pg1 = MovieService.top_forty(1)
     pg2 = MovieService.top_forty(2)
-    movies = pg1[:results].concat(pg2[:results])
+    pg1[:results].concat(pg2[:results])
   end
 
   def self.search_title(query)
-    query.gsub!(" ", "+")
+    query.gsub!(' ', '+')
     movies = MovieService.search_title(query)
     movies[:results]
   end

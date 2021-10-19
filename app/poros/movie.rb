@@ -20,22 +20,20 @@ class Movie
   end
 
   def list_genres(data)
-    genres = data.map do |genre|
+    data.map do |genre|
       genre[:name]
     end
   end
 
   def list_cast(data)
-    cast = data.map do |actor|
-      {actor: actor[:name], character: actor[:character]}
-    end
-    cast = cast.slice(0, 10)
+    data.map do |actor|
+      { actor: actor[:name], character: actor[:character] }
+    end.slice(0, 10)
   end
 
   def list_reviews(data)
-    reviews = data.map do |rev|
-      {author: rev[:author], content: rev[:content]}
+    data.map do |rev|
+      { author: rev[:author], content: rev[:content] }
     end
   end
-
 end
