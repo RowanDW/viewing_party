@@ -8,11 +8,10 @@
   <%= f.time_field :start_time, placeholder: "Start Time:" %><br><br>
   &ensp;<%= f.text_field :duration, placeholder: "Party length (> #{@movie.runtime} min.):", min: 0 %>
   <% if @friends.present? %>
-    <h2> Invite: </h1>
+    <br><br><h4> Invite: </h4>
     <% @friends.each do |friend| %>
-      <%= check_box("friend", friend.id) %>
-      <%= friend.email %><br><br>
-    <% end %>
+      <%= link_to "Send #{friend.name} an invite", method: :post, model: Invite %><br>
+    <% end %><br>
   <% end %>
   <%= f.submit "Create Party" %>
 <% end %>

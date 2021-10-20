@@ -1,5 +1,5 @@
-<br/><br/><br/>
-<%= button_to "Find Top Rated Movies",  movies_path, method: :get %><br/><br/><br/>
+<br/><br/>
+<%= button_to "Find Top Rated Movies",  movies_path, method: :get %><br/>
 
 <% if @movies.count == 0 %>
   <h4>OR</h4><br/>
@@ -12,19 +12,19 @@
 <% end %><br/><br/>
 
 <% if @movies.count == 40 %>
-  <h2>Top 40 Movies</h2><br/>
+  <h3>Top 40 Movies</h3><br/>
   <% @movies.each do |movie| %>
   <tr>
     <td><%= link_to movie[:title], movie_path(movie[:id]) %></td><br/>
   </tr>
   <% end %>
 <% elsif @movies.count == 0 %>
-  <h2>No movies found</h2><br/>
+  <h3>No movies found</h3><br/>
 <% elsif %>
-  <h2>Search Results</h2><br/>
+  <h3>Search Results</h3><br/>
   <% @movies.each do |movie| %>
   <tr>
-    <td><%= link_to movie[:title], movie_path(movie[:id]) %></td>
+    <td><%= link_to movie[:title], movie_path(movie[:id]) %></td><br/>
   </tr>
   <% end %>
 <% end %>
