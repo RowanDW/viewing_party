@@ -1,0 +1,19 @@
+<div class="container mt-4">
+
+<br><h3>Create a viewing party for: </h3><br>
+<h1><%= @movie.title %></h1><br>
+
+<%= form_with(model: @party, url: parties_path, local: true, method: :post) do |f| %>
+  <%= f.hidden_field :host_id, value: current_user.id %>
+  <%= f.hidden_field :movie, value: @movie.id %>
+  <%= f.date_field :day %>&ensp;
+  <%= f.time_field :start_time %><br><br>
+  <%= f.text_field :duration, value: @movie.runtime %><br><br>
+  <% @friends.each do |friend| %>
+    <%= f.label :friend_add, friend.name %>
+    <%= check_box :friend_add, friend.id %>
+  <% end %><br>
+  <%= f.submit "Create Party" %>
+<% end %>
+
+</div>
