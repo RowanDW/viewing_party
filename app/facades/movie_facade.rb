@@ -1,20 +1,15 @@
 class MovieFacade
-  def self.movie_show(movie_id)
-    details = MovieService.details(movie_id)
-    cast = MovieService.cast(movie_id)
-    reviews = MovieService.reviews(movie_id)
-    @movie = Movie.new(details, cast, reviews)
+  def self.get_details
+    movie_info = MovieService.list_details
+    # movie_id = movie_info[:id]
+    # title = movie_info[:title]
+    Movie.new(movie_info)
   end
 
-  def self.top_forty
-    pg1 = MovieService.top_forty(1)
-    pg2 = MovieService.top_forty(2)
-    pg1[:results].concat(pg2[:results])
+  def self.search_titles(title)
+    found_movies = MovieService.search_for(title)
+    # require "pry"; binding.pry
+    found_movies[:results]
   end
 
-  def self.search_title(query)
-    query.gsub!(' ', '+')
-    movies = MovieService.search_title(query)
-    movies[:results]
-  end
 end

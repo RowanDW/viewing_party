@@ -1,36 +1,21 @@
 class MovieService
-  def self.search_title(query)
-    response = conn.get("/3/search/movie?query=#{query}")
-    parse_json(response)
-  end
-
-  def self.details(movie_id)
-    response = conn.get("/3/movie/#{movie_id}")
-    parse_json(response)
-  end
-
-  def self.cast(movie_id)
-    response = conn.get("/3/movie/#{movie_id}/credits")
-    parse_json(response)
-  end
-
-  def self.reviews(movie_id)
-    response = conn.get("/3/movie/#{movie_id}/reviews")
-    parse_json(response)
-  end
-
-  def self.top_forty(page)
-    response = conn.get("/3/discover/movie?page=#{page}")
-    parse_json(response)
-  end
-
+  # class << self; end
   def self.conn
-    Faraday.new(url: 'https://api.themoviedb.org/', params: { api_key: ENV['tmdb_api_key'] }) do |faraday|
-      faraday.adapter Faraday.default_adapter
+    Faraday.new(url: "https://api.themoviedb.org", params: {"api_key" => ENV['tmdb_api_key']}, headers: {'Content-Type' => 'application/json'}) do |faraday|
     end
   end
 
-  def self.parse_json(response)
+  def self.list_details(movie_id)
+    response = conn.get("/3/movie/#{movie_id}")
+
+    JSON.parse(response.body, symbolize_names: true)
+    # require "pry"; binding.pry
+  end
+
+  def self.search_for(title)
+    response = conn.get("/3/search/movie?query=#{title}")
+
     JSON.parse(response.body, symbolize_names: true)
   end
+
 end

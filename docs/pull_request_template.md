@@ -3,6 +3,7 @@ Description of changes:
 Necessary checkmarks:
 
     [] All Tests are Passing
+
     [] The code will run locally
 
 Type of change
@@ -12,7 +13,8 @@ Type of change
     [] Refactor
 
 Implements/Fixes:
-    # description closes #
+
+    description closes #
 
 Check the correct boxes
 
@@ -22,7 +24,6 @@ Check the correct boxes
 
 Testing Changes
 
-    [] New Tests added
     [] No Tests have been changed
     [] Some Tests have been changed
     [] All of the Tests have been changed (Please describe what in the world happened)
