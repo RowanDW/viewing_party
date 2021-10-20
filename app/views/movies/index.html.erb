@@ -15,7 +15,7 @@
   <h3>Top 40 Movies</h3><br/>
   <% @movies.each do |movie| %>
   <tr>
-    <td><%= link_to movie[:title], movie_path(movie[:id]) %></td><br/>
+    <td><%= link_to movie[:title], movie_path(movie[:id]) %> -- <%= movie[:vote_average] %> rating</td><br/>
   </tr>
   <% end %>
 <% elsif @movies.count == 0 %>
@@ -24,7 +24,7 @@
   <h3>Search Results</h3><br/>
   <% @movies.each do |movie| %>
   <tr>
-    <td><%= link_to movie[:title], movie_path(movie[:id]) %></td><br/>
+    <td><%= link_to movie[:title], movie_path(movie[:id]) %> -- <%= movie[:vote_average] %> rating</td><br/>
   </tr>
   <% end %>
 <% end %>

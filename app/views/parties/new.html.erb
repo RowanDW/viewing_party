@@ -10,7 +10,8 @@
   <% if @friends.present? %>
     <br><br><h4> Invite: </h4>
     <% @friends.each do |friend| %>
-      <%= link_to "Send #{friend.name} an invite", method: :post, model: Invite %><br>
+      <%= check_box("#{friend.name}") %>
+      <%= friend.name %><br><br>
     <% end %><br>
   <% end %>
   <%= f.submit "Create Party" %>
