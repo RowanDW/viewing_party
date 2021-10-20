@@ -1,13 +1,13 @@
-<h1><%= @movie.title %></h1>
+<br><h1>&ensp;&ensp;<%= @movie.title %></h1><br>
 <div class="row">
     <div class="col">
-      <%= button_to 'New Viewing Party', new_party_path, params: {id: @movie.id}, method: :get %>
-      <h3><%= @movie.runtime %> min.</h3><br/>
+      <%= button_to 'New Viewing Party', new_party_path, params: {id: @movie.id}, method: :get %><br>
+      <h4>Runtime: <%= @movie.runtime %> min.</h4><br>
       <p>SUMMARY: <%= @movie.overview %></p>
-      <h3>Genres:
-      <% @movie.genres.each do |genre| %>
+      <h3>Genres: </h3>
+      <h5><% @movie.genres.each do |genre| %>
         <%= genre %>
-      <% end %></h3>
+      <% end %></h5><br>
       <h3>Average Rating: <%= @movie.vote_average %></h3>
     </div>
 
@@ -15,11 +15,11 @@
       <h3>Cast:</h3>
       <% @movie.cast.each do |cast| %>
         <p><%= cast[:actor] %> as <%= cast[:character] %></p>
-      <% end %><br/>
+      <% end %><br>
 
     </div>
   </div>
-  <h3><%= @movie.reviews.size %> Reviews :</h3>
+  <h3>( <%= @movie.reviews.size %> )  Reviews :</h3>
   <% @movie.reviews.each do |rev| %>
     <p><b><%= rev[:author] %></b> - <%= rev[:content] %></p>
   <% end %>
