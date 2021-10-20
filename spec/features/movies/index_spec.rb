@@ -37,7 +37,7 @@ RSpec.describe "The movie index page" do
     expect(page).to have_content("The Princess and the Frog")
   end
 
-  xit "links each movie title to its show page", :vcr do  #
+  it "links each movie title to its show page", :vcr do  #
     visit movies_path
 
     expect(page).to have_link("Venom: Let There Be Carnage")

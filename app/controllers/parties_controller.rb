@@ -7,34 +7,26 @@ class PartiesController < ApplicationController
 
   def create
     @movie = MovieFacade.movie_show(party_params[:movie])
-    # require "pry"; binding.pry
-    if party_params[:duration].to_i >= @movie.runtime
-      new_party = Party.new(party_params)
-      # require "pry"; binding.pry
+    new_party = Party.new(party_params)
 
-      if new_party.save
-        if params[:friend_add]
-          params[:friend_add].each do |friend, invite|
-            if invite == "1"
-              Invite.create!(party_id: new_party.id, guest_id: friend.to_i)
-            end
-          end
+    if party_params[:duration].to_i < @movie.runtime
+      redirect_to "/parties/new?id=#{party_params[:movie]}"
+      flash[:error] = 'Party duration cannot be less than movie run time.'
+    elsif new_party.save
+      if params[:friend_add]
+        params[:friend_add].each do |friend, invite|
+          Invite.create(party_id: new_party.id, guest_id: friend.to_i) if invite == '1'
         end
-        redirect_to dashboard_path
-        flash[:success] = "You've created a Viewing Party!"
-      else
-        redirect_to "/parties/new?id=#{party_params[:movie]}"
-        flash[:error] = "You must enter a valid start time, date and duration."
       end
+      redirect_to dashboard_path
+      flash[:success] = "You've created a Viewing Party!"
     else
       redirect_to "/parties/new?id=#{party_params[:movie]}"
-      flash[:error] = "Party duration cannot be less than movie run time."
+      flash[:error] = 'You must enter a valid start time, date and duration.'
     end
   end
 
-  #   def add_party_guest(party)
-  #     Invite.create(party_id: party.id,  guest_id: id.to_i)
-  #   end
+  private
 
   def party_params
     params.require(:party).permit(:host_id, :duration, :start_time, :day, :movie)

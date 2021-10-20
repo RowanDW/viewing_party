@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/580489?api_key=<DONT_SHARE_MY_TMDB_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 20 Oct 2021 22:24:08 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=28800
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - f095e4e0c55d74e509834ae513b476147a2aa078
+      X-Memc-Age:
+      - '14632'
+      X-Memc-Expires:
+      - '793'
+      Etag:
+      - W/"1568847a322594fb92812f25bfe3d26a"
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 b2e880ac67c1fba390623b9fc04bd63a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - 8749hxHeQlN9iWuNEh7BQb0RRlVDYLIvq99jcFiM4_iIjIyhp8B7gA==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"adult":false,"backdrop_path":"/70nxSw3mFBsGmtkvcs91PbjerwD.jpg","belongs_to_collection":{"id":558216,"name":"Venom
+        Collection","poster_path":"/670x9sf0Ru8y6ezBggmYudx61yB.jpg","backdrop_path":"/rhLspFB1B8ZCkWEHFYmc3NKagzq.jpg"},"budget":110000000,"genres":[{"id":878,"name":"Science
+        Fiction"},{"id":28,"name":"Action"}],"homepage":"https://www.venom.movie","id":580489,"imdb_id":"tt7097896","original_language":"en","original_title":"Venom:
+        Let There Be Carnage","overview":"After finding a host body in investigative
+        reporter Eddie Brock, the alien symbiote must face a new enemy, Carnage, the
+        alter ego of serial killer Cletus Kasady.","popularity":8222.616,"poster_path":"/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg","production_companies":[{"id":7505,"logo_path":"/837VMM4wOkODc1idNxGT0KQJlej.png","name":"Marvel
+        Entertainment","origin_country":"US"},{"id":84041,"logo_path":"/XmHMPGzdI5c4WGX1YlxU4s2v7T.png","name":"Pascal
+        Pictures","origin_country":"US"},{"id":5,"logo_path":"/71BqEFAF4V3qjjMPCpLuyJFB9A.png","name":"Columbia
+        Pictures","origin_country":"US"},{"id":34,"logo_path":"/GagSvqWlyPdkFHMfQ3pNq6ix9P.png","name":"Sony
+        Pictures","origin_country":"US"},{"id":81620,"logo_path":"/gNp4dfuBOXmVWdGKb63NfbFNbFi.png","name":"Tencent
+        Pictures","origin_country":"CN"}],"production_countries":[{"iso_3166_1":"CN","name":"China"},{"iso_3166_1":"US","name":"United
+        States of America"}],"release_date":"2021-09-30","revenue":283000000,"runtime":97,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"","title":"Venom:
+        Let There Be Carnage","video":false,"vote_average":7.0,"vote_count":847}'
+  recorded_at: Wed, 20 Oct 2021 22:24:08 GMT
+recorded_with: VCR 6.0.0

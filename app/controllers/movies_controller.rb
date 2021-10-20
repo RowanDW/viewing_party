@@ -1,10 +1,7 @@
 class MoviesController < ApplicationController
   def index
-    if params[:query]
-      @movies = MovieFacade.search_title(params[:query])
-    else
-      @movies = MovieFacade.top_forty
-    end
+    @movies = MovieFacade.top_forty
+    @movies = MovieFacade.search_title(params[:query]) if params[:query]
   end
 
   def show

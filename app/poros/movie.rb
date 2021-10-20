@@ -20,7 +20,6 @@ class Movie
   end
 
   def list_genres(data)
-    # require "pry"; binding.pry
     data.map do |genre|
       genre[:name]
     end
