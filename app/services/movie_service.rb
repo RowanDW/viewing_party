@@ -1,4 +1,9 @@
 class MovieService
+  def self.recommended(movie_id)
+    response = conn.get("/3/movie/#{movie_id}/recommendations")
+    parse_json(response)
+  end
+
   def self.search_title(query)
     response = conn.get("/3/search/movie?query=#{query}")
     parse_json(response)
@@ -21,6 +26,11 @@ class MovieService
 
   def self.top_forty(page)
     response = conn.get("/3/discover/movie?page=#{page}")
+    parse_json(response)
+  end
+
+  def self.now_playing
+    response = conn.get('/3/movie/now_playing')
     parse_json(response)
   end
 

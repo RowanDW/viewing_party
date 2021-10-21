@@ -17,4 +17,14 @@ class MovieFacade
     movies = MovieService.search_title(query)
     movies[:results]
   end
+
+  def self.now_playing
+    movies = MovieService.now_playing
+    movies[:results]
+  end
+
+  def self.recommended(movie_id)
+    movies = MovieService.recommended(movie_id)
+    movies[:results]
+  end
 end

@@ -1,5 +1,10 @@
 <br/><br/>
 <div id='discover' class="d-flex justify-content-center">
+  <%= button_to "Movies Now Playing",  movies_path, params: {now_playing: true}, method: :get, class: "btn btn-outline-dark" %>
+</div><br/><br/>
+
+<br/><br/>
+<div id='discover' class="d-flex justify-content-center">
   <%= button_to "Find Top Rated Movies",  movies_path, method: :get, class: "btn btn-outline-dark" %>
 </div><br/><br/>
 

@@ -12,6 +12,26 @@ RSpec.describe 'MovieFacade' do
       end
     end
 
+    describe '::now_playing' do
+      it 'returns list of movies now playing', :vcr do
+        movies = MovieFacade.now_playing
+
+        expect(movies).to be_a(Array)
+        expect(movies.count).to eq(20)
+        expect(movies.second[:title]).to eq("Free Guy")
+      end
+    end
+
+    describe '::recommended' do
+      it 'returns list of recommended movies', :vcr do
+        movies = MovieFacade.recommended(451048)
+
+        expect(movies).to be_a(Array)
+        expect(movies.count).to eq(21)
+        expect(movies.second[:title]).to eq("F9")
+      end
+    end
+
     describe '::search_title' do
       it 'returns all movies related to query', :vcr do
         movies = MovieFacade.search_title("Cruella")
