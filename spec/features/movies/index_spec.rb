@@ -25,6 +25,16 @@ RSpec.describe "The movie index page" do
     expect(page).to have_content("The Addams Family 2")
   end
 
+  it 'has button to go to movies now playing', :vcr do
+    visit discover_path
+
+    expect(page).to have_button("Movies Now Playing")
+    click_button("Movies Now Playing")
+
+    expect(current_path).to eq(movies_path)
+    expect(page).to have_content("Free Guy")
+  end
+
   it 'has a search field to find movies', :vcr do
     visit movies_path
 

@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Wed, 20 Oct 2021 22:24:08 GMT
+      - Wed, 20 Oct 2021 22:16:50 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -42,21 +42,23 @@ http_interactions:
       X-Memc-Key:
       - f095e4e0c55d74e509834ae513b476147a2aa078
       X-Memc-Age:
-      - '14632'
+      - '14194'
       X-Memc-Expires:
-      - '793'
+      - '1231'
       Etag:
       - W/"1568847a322594fb92812f25bfe3d26a"
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 b2e880ac67c1fba390623b9fc04bd63a.cloudfront.net (CloudFront)
+      - 1.1 d29afc70fc2fdadee440493854714224.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - 8749hxHeQlN9iWuNEh7BQb0RRlVDYLIvq99jcFiM4_iIjIyhp8B7gA==
+      - 83NygADvbae2qbph4hj5FPx-106Lqx0EEXBvvBV179RFN5VrbdSFqA==
+      Age:
+      - '7242'
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/70nxSw3mFBsGmtkvcs91PbjerwD.jpg","belongs_to_collection":{"id":558216,"name":"Venom
@@ -72,5 +74,5 @@ http_interactions:
         Pictures","origin_country":"CN"}],"production_countries":[{"iso_3166_1":"CN","name":"China"},{"iso_3166_1":"US","name":"United
         States of America"}],"release_date":"2021-09-30","revenue":283000000,"runtime":97,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"","title":"Venom:
         Let There Be Carnage","video":false,"vote_average":7.0,"vote_count":847}'
-  recorded_at: Wed, 20 Oct 2021 22:24:08 GMT
+  recorded_at: Thu, 21 Oct 2021 00:17:32 GMT
 recorded_with: VCR 6.0.0

@@ -1,6 +1,10 @@
 <div class="container mt-4">
 
 <br/><br/>
+<%= button_to "Movies Now Playing",  movies_path, params: {now_playing: true}, method: :get %><br/>
+
+
+<br/><br/>
 <%= button_to "Find Top Rated Movies",  movies_path, method: :get %><br/>
 
 <% if @movies.count == 0 %>

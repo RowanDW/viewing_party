@@ -6,6 +6,16 @@ RSpec.describe 'the discover-index page' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@rowan)
   end
 
+  it 'has button to go to movies now playing', :vcr do
+    visit discover_path
+
+    expect(page).to have_button("Movies Now Playing")
+    click_button("Movies Now Playing")
+
+    expect(current_path).to eq(movies_path)
+    expect(page).to have_content("Free Guy")
+  end
+
   it 'has button to go to top rated movies', :vcr do
     visit discover_path
 

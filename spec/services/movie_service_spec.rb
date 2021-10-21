@@ -26,6 +26,22 @@ RSpec.describe MovieService do
     expect(response[:overview]).to be_an String
   end
 
+  it "can get recommended movie", :vcr do
+    response = MovieService.recommended(580489)
+
+    expect(response).to be_a Hash
+    expect(response).to have_key :results
+    expect(response[:results]).to be_an Array
+
+    first_result = response[:results].second
+
+    expect(first_result).to have_key :title
+    expect(first_result[:title]).to be_a String
+
+    expect(first_result).to have_key :id
+    expect(first_result[:id]).to be_a Integer
+  end
+
   it "can get movie cast", :vcr do
     response = MovieService.cast(580489)
 
@@ -81,6 +97,25 @@ RSpec.describe MovieService do
 
   it "can search for top forty titles", :vcr do
     response = MovieService.top_forty(1)
+
+    expect(response).to be_a Hash
+    expect(response).to have_key :results
+    expect(response[:results]).to be_an Array
+
+    first_result = response[:results].second
+
+    expect(first_result).to have_key :title
+    expect(first_result[:title]).to be_a String
+
+    expect(first_result).to have_key :id
+    expect(first_result[:id]).to be_a Integer
+
+    expect(first_result).to have_key :vote_average
+    expect(first_result[:vote_average]).to be_a Float
+  end
+
+  it "can list now playing titles", :vcr do
+    response = MovieService.now_playing
 
     expect(response).to be_a Hash
     expect(response).to have_key :results
