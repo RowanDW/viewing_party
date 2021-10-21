@@ -1,29 +1,58 @@
 # Viewing Party
 
-This is the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
+## Background and Description
 
-### About this Project
+Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friends.
 
-Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's.
+## Learning Goals
+- Consume JSON APIs that require authentication
+- Build an application that requires basic authentication
+- Organize and refactor code to be more maintainable
+- Implement a self-referential relationship in ActiveRecord
+- Apply RuboCop’s style guide for code quality
+- Utilize Continuous Integration using Travis CI
+- Deploy to Heroku
 
-## Local Setup
+## Requirements
+- Rails 5.2.x
+- PostgreSQL
+- Test all feature and model code
+- GitHub branching, team code reviews via GitHub comments, and github projects to track progress on user stories
+- Deploy completed code to Heroku
+- Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
 
-1. Fork and Clone the repo
-2. Install gem packages: `bundle install`
-3. Setup the database: `rails db:create`
+## Database Schema
+![Schema](https://user-images.githubusercontent.com/83834410/136859707-5369b3fe-8284-4804-9dbe-b90f29f42395.png)
 
+## Setup
+This project requires Ruby 2.7.2.
 
-## Versions
+* Fork this repository
+* Clone your fork
+* From the command line, install gems and set up your DB:
+    * `bundle install`
+    * `rails db:{create,migrate}`
+* Run the test suite with `bundle exec rspec`.
+* Run your development server with `rails s` to see the app in action.
 
-- Ruby 2.7.2
+## Live App
+[Link to Heroku deployment](https://limitless-basin-76464.herokuapp.com/)
 
-- Rails 5.2.5
+## Tools Used
 
-Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
-
-Schema:
-
-![21-Oct-ViewingParty](https://user-images.githubusercontent.com/83834410/136859707-5369b3fe-8284-4804-9dbe-b90f29f42395.png)
+| Development    |  Testing             |
+| :-------------:| :-------------------:|
+| Ruby 2.7.2     | SimpleCov            |
+| Rails 5.2.6    | Pry                  |
+| HTML5          | Capybara             |
+| Bootstrap      | ShouldaMatcher       |
+| Atom           | Launchy              |
+| Git            | Orderly              |
+| Github         | Factorybot/Faker     |
+| Github Project | Faraday              |
+| Postico        | RSpec                |
+| Heroku         | VCR                  |
+|                | Webmock              |
 
 ## Contact
 Created by:
