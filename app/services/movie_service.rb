@@ -1,27 +1,24 @@
 class MovieService
-  def self.recommended(movie_id)
-    request("/3/movie/#{movie_id}/recommendations")
+  def self.recommended(id)
+    request("/3/movie/#{id}/recommendations")
   end
 
   def self.search_title(query)
     request("/3/search/movie?query=#{query}")
   end
 
-  def self.details(movie_id)
-    # request("/3/movie/#{movie_id}")
-    response = conn.get("/3/movie/#{movie_id}")
+  def self.details(id)
+    response = conn.get("/3/movie/#{id}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.cast(movie_id)
-    # request("/3/movie/#{movie_id}/credits")
-    response = conn.get("/3/movie/#{movie_id}/credits")
+  def self.cast(id)
+    response = conn.get("/3/movie/#{id}/credits")
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.reviews(movie_id)
-    # request("/3/movie/#{movie_id}/reviews")
-    response = conn.get("/3/movie/#{movie_id}/reviews")
+  def self.reviews(id)
+    response = conn.get("/3/movie/#{id}/reviews")
     JSON.parse(response.body, symbolize_names: true)
   end
 
@@ -34,16 +31,16 @@ class MovieService
   end
 
   private
+
   def self.request(path)
     response = conn.get(path)
     JSON.parse(response.body, symbolize_names: true)[:results]
   end
 
   def self.conn
-    # Faraday.new(url: 'https://api.themoviedb.org/', params: { api_key: ENV['tmdb_api_key'] }) do |faraday|
     Faraday.new(url: 'https://api.themoviedb.org/') do |faraday|
-      faraday.params['api_key'] = ENV["tmdb_api_key"]
-      # faraday.adapter Faraday.default_adapter
+      faraday.params['api_key'] = ENV['tmdb_api_key']
+      # faraday.adapter Faraday.default_adapter #?
     end
   end
 end

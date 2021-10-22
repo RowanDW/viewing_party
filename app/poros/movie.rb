@@ -20,7 +20,7 @@ class Movie
   end
 
   def get_genres(data)
-    data.map {|genre| genre[:name]}
+    data.map { |genre| genre[:name] }
   end
 
   def get_cast(data)
@@ -28,6 +28,6 @@ class Movie
   end
 
   def get_reviews(data)
-    data.map { |review|  Review.new(review) }
+    data.map { |review| Review.new(review) }
   end
 end
