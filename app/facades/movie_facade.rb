@@ -1,9 +1,17 @@
 class MovieFacade
   def self.movie_show(id)
     info = MovieService.request("/3/movie/#{id}")
-    cast = MovieService.request("/3/movie/#{id}/credits")
-    reviews = MovieService.request("/3/movie/#{id}/reviews")
-    @movie = Movie.new(info, cast, reviews)
+    @movie = Movie.new(info)
+  end
+
+  def self.all_cast(id)
+    cast = MovieService.request("/3/movie/#{id}/credits")[:cast]
+    cast[0..9].map { |actor| Actor.new(actor) }
+  end
+
+  def self.all_reviews(id)
+    revs = MovieService.reviews(id)
+    revs.map { |review| Review.new(review) }
   end
 
   def self.top_forty

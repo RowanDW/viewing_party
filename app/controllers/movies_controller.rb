@@ -7,8 +7,10 @@ class MoviesController < ApplicationController
 
   def show
     @movie = MovieFacade.movie_show(params[:id])
-    @reviews = @movie.reviews
-    @cast = @movie.cast
+    @cast = MovieFacade.all_cast(params[:id])
+    @reviews = MovieFacade.all_reviews(params[:id])
     @recommendations = MovieFacade.recommended(params[:id])
+    # require "pry"; binding.pry
+
   end
 end

@@ -1,4 +1,8 @@
 class MovieService
+  def self.reviews(id)
+    request("/3/movie/#{id}/reviews")[:results]
+  end
+
   def self.search_title(query)
     request("/3/search/movie?query=#{query}")[:results]
   end
@@ -19,7 +23,7 @@ class MovieService
 
   def self.request(path)
     response = conn.get(path)
-    JSON.parse(response.body, symbolize_names: true)  #[:results]
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def self.conn
