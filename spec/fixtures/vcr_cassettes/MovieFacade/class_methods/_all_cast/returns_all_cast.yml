@@ -1,0 +1,167 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/337404/credits?api_key=<DONT_SHARE_MY_TMDB_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 22 Oct 2021 09:22:34 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=28800
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - c23f5242c15bbf23aada2b2f764ee66cdce4b314
+      X-Memc-Age:
+      - '5473'
+      X-Memc-Expires:
+      - '9208'
+      Etag:
+      - W/"6dcecc109a22e997ed807a6a0946aee6"
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 788f6ff13e09a712f5227945fa34a519.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - J_Phw5OAylvkwfmK0Dv2MtbNeKM3KAd8we75EBV200CGqhrNzMjqCQ==
+      Age:
+      - '3494'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":337404,"cast":[{"adult":false,"gender":1,"id":54693,"known_for_department":"Acting","name":"Emma
+        Stone","original_name":"Emma Stone","popularity":8.963,"profile_path":"/cZ8a3QvAnj2cgcgVL6g4XaqPzpL.jpg","cast_id":0,"character":"Estella
+        / Cruella","credit_id":"59a50d419251412f02004a64","order":0},{"adult":false,"gender":1,"id":7056,"known_for_department":"Acting","name":"Emma
+        Thompson","original_name":"Emma Thompson","popularity":9.941,"profile_path":"/xr8Ki3CIqweWWqS5q0kUYdiK6oQ.jpg","cast_id":11,"character":"The
+        Baroness","credit_id":"5d3f84f060b58d00106bb4b0","order":1},{"adult":false,"gender":2,"id":54811,"known_for_department":"Acting","name":"Joel
+        Fry","original_name":"Joel Fry","popularity":10.154,"profile_path":"/4nEKEWJpaTHncCTv6zeP98V0qGI.jpg","cast_id":13,"character":"Jasper","credit_id":"5d4b212953f83314d5d339b2","order":2},{"adult":false,"gender":2,"id":1294982,"known_for_department":"Acting","name":"Paul
+        Walter Hauser","original_name":"Paul Walter Hauser","popularity":4.261,"profile_path":"/hV2oiKF2xlDMXtuq3Si1TA4b6DA.jpg","cast_id":12,"character":"Horace","credit_id":"5d3f8503b87aec037938ec3d","order":3},{"adult":false,"gender":2,"id":2983,"known_for_department":"Acting","name":"Mark
+        Strong","original_name":"Mark Strong","popularity":13.174,"profile_path":"/pw6AvwaBbr44Nje9JQMBBwhchiu.jpg","cast_id":30,"character":"John
+        the Valet","credit_id":"602d2f3b44ea54003fd4a042","order":4},{"adult":false,"gender":1,"id":2163852,"known_for_department":"Acting","name":"Tipper
+        Seifert-Cleveland","original_name":"Tipper Seifert-Cleveland","popularity":3.096,"profile_path":"/yJTIExQYXMeNdY6s9ZZ9VUkQxQS.jpg","cast_id":36,"character":"Estella
+        (12 yrs)","credit_id":"60ae527705b54900290d8a48","order":5},{"adult":false,"gender":1,"id":1532312,"known_for_department":"Acting","name":"Kirby
+        Howell-Baptiste","original_name":"Kirby Howell-Baptiste","popularity":5.333,"profile_path":"/neWSyBmw5q2JJiOAXWk4lvWJGlY.jpg","cast_id":15,"character":"Anita
+        Darling","credit_id":"5d8aa756abf8e2000f77166e","order":6},{"adult":false,"gender":1,"id":130414,"known_for_department":"Acting","name":"Emily
+        Beecham","original_name":"Emily Beecham","popularity":3.681,"profile_path":"/knR5avTlO4Xnxw7Nc3xxUj3rtjh.jpg","cast_id":14,"character":"Catherine","credit_id":"5d84e760109dec0252cc3ef9","order":7},{"adult":false,"gender":2,"id":1819918,"known_for_department":"Acting","name":"John
+        McCrea","original_name":"John McCrea","popularity":2.971,"profile_path":"/lj2qUd1TxeCY0G76QZF4dRKdHZ1.jpg","cast_id":33,"character":"Artie","credit_id":"606dffa9e1ad790040b0759d","order":8},{"adult":false,"gender":2,"id":2959,"known_for_department":"Acting","name":"Kayvan
+        Novak","original_name":"Kayvan Novak","popularity":4.616,"profile_path":"/bjOKpuBWgLdF8WV1M8SE7C7xNea.jpg","cast_id":35,"character":"Roger","credit_id":"60ae525d0f2ae1003f4f5431","order":9},{"adult":false,"gender":0,"id":1470911,"known_for_department":"Acting","name":"Jamie
+        Demetriou","original_name":"Jamie Demetriou","popularity":4.366,"profile_path":"/owXXYV1MNijRAVJV2Q47WEWT9Wv.jpg","cast_id":32,"character":"Gerald","credit_id":"6041baba5690b5005a064f0d","order":10},{"adult":false,"gender":2,"id":1432064,"known_for_department":"Acting","name":"Abraham
+        Popoola","original_name":"Abraham Popoola","popularity":0.6,"profile_path":"/qOTrfglDJaGLW3EipLL6k65Jpns.jpg","cast_id":34,"character":"George","credit_id":"606dffc109c24c0058439473","order":11},{"adult":false,"gender":2,"id":29237,"known_for_department":"Acting","name":"Leo
+        Bill","original_name":"Leo Bill","popularity":4.625,"profile_path":"/lyXVnrvrbtAr5pPKaqGHQfe1a7W.jpg","cast_id":39,"character":"Headmaster","credit_id":"60b161605b07140040b62565","order":12},{"adult":false,"gender":0,"id":1333631,"known_for_department":"Acting","name":"Javone
+        Prince","original_name":"Javone Prince","popularity":1.201,"profile_path":null,"cast_id":40,"character":"Ipswich
+        Manor Security Guard","credit_id":"60b1619c72d855004072b39b","order":13},{"adult":false,"gender":0,"id":62973,"known_for_department":"Acting","name":"Steve
+        Edge","original_name":"Steve Edge","popularity":1.032,"profile_path":null,"cast_id":41,"character":"Steven
+        the Jewellery Shop Assistant","credit_id":"60b161c2957e6d002a2b4d8d","order":14},{"adult":false,"gender":2,"id":1123187,"known_for_department":"Acting","name":"Paul
+        Chowdhry","original_name":"Paul Chowdhry","popularity":1.22,"profile_path":"/qgxjP7pS8MtUwfHEvstInC4Jxcr.jpg","cast_id":42,"character":"Restaurant
+        Owner","credit_id":"60b162019dee580057addb4c","order":15},{"adult":false,"gender":0,"id":3106896,"known_for_department":"Acting","name":"Ziggy
+        Gardner","original_name":"Ziggy Gardner","popularity":1.4,"profile_path":null,"cast_id":43,"character":"Jasper
+        (12 yrs)","credit_id":"60b162a572d855002ad10f65","order":16},{"adult":false,"gender":0,"id":3106897,"known_for_department":"Acting","name":"Joseph
+        MacDonald","original_name":"Joseph MacDonald","popularity":0.6,"profile_path":null,"cast_id":44,"character":"Horace
+        (12 yrs)","credit_id":"60b1633a945c20005810cb80","order":17},{"adult":false,"gender":1,"id":2451439,"known_for_department":"Acting","name":"Niamh
+        Lynch","original_name":"Niamh Lynch","popularity":1.22,"profile_path":"/aiLxUTc8EE2MG49oMN39y1HgkUD.jpg","cast_id":45,"character":"Liberty
+        Shop Girl","credit_id":"60b25fc4c09e99004027be68","order":18},{"adult":false,"gender":2,"id":1312526,"known_for_department":"Acting","name":"Andrew
+        Leung","original_name":"Andrew Leung","popularity":10.865,"profile_path":"/hXK4gUIooj3SpQ2qwEN9JLV0B7d.jpg","cast_id":46,"character":"Jeffrey","credit_id":"60b25fe1a06645002a512746","order":19},{"adult":false,"gender":2,"id":1349801,"known_for_department":"Acting","name":"Ed
+        Birch","original_name":"Ed Birch","popularity":1.4,"profile_path":"/k3CBVC3PVrcih7Q9xlySlqE8pMh.jpg","cast_id":47,"character":"Baroness
+        Head of Security","credit_id":"60b260873520e800405fe471","order":20},{"adult":false,"gender":0,"id":1503746,"known_for_department":"Acting","name":"Dylan
+        Lowe","original_name":"Dylan Lowe","popularity":0.6,"profile_path":"/uZcmqTB2KubpsT1wSui66C6kHSA.jpg","cast_id":48,"character":"Mean
+        Ginger","credit_id":"60b260ae477215002a83fe13","order":21},{"adult":false,"gender":2,"id":110075,"known_for_department":"Acting","name":"Paul
+        Bazely","original_name":"Paul Bazely","popularity":3.222,"profile_path":"/t0zvUJWzMCOqpDfQRKbeTTkhqt3.jpg","cast_id":49,"character":"Police
+        Commissioner","credit_id":"60b260c9477215005802ec46","order":22},{"adult":false,"gender":1,"id":2160734,"known_for_department":"Acting","name":"Ninette
+        Finch","original_name":"Ninette Finch","popularity":0.6,"profile_path":"/d1m2HVDDOfVtfUDQGbAS3qZPnrl.jpg","cast_id":50,"character":"Lady","credit_id":"60b260e9b7b69d0057c35e78","order":23},{"adult":false,"gender":1,"id":1356007,"known_for_department":"Acting","name":"Sarah
+        Crowden","original_name":"Sarah Crowden","popularity":1.099,"profile_path":"/3mc7xMh0hGsHPuxCKjJtHQ7viYH.jpg","cast_id":51,"character":"Beehive
+        Lady","credit_id":"60b260fac490480040f9d7bb","order":24},{"adult":false,"gender":0,"id":3107557,"known_for_department":"Acting","name":"Harrison
+        Willmott","original_name":"Harrison Willmott","popularity":0.6,"profile_path":null,"cast_id":52,"character":"Mean
+        Kid","credit_id":"60b2612a477215002a83fec1","order":25},{"adult":false,"gender":2,"id":2426997,"known_for_department":"Acting","name":"Jack
+        Barry","original_name":"Jack Barry","popularity":0.6,"profile_path":"/A1YjxMNVt3LWcIRrAb3RW2WEc2q.jpg","cast_id":53,"character":"Restaurant
+        Valet","credit_id":"60b261b8c49048002a0f3c2a","order":26},{"adult":false,"gender":1,"id":2486152,"known_for_department":"Acting","name":"Asmara
+        Gabrielle","original_name":"Asmara Gabrielle","popularity":0.6,"profile_path":null,"cast_id":54,"character":"Teacher","credit_id":"60b261c6bf31f2007a3b8cfe","order":27},{"adult":false,"gender":2,"id":1593293,"known_for_department":"Acting","name":"Tom
+        Turner","original_name":"Tom Turner","popularity":0.6,"profile_path":"/wtL9eRpelekpa3Fbmql297BcpGJ.jpg","cast_id":55,"character":"The
+        Baron","credit_id":"60b261e262e86f002b3b460b","order":28},{"adult":false,"gender":0,"id":2251709,"known_for_department":"Acting","name":"Crystal
+        Wingx","original_name":"Crystal Wingx","popularity":0.6,"profile_path":null,"cast_id":78,"character":"Head
+        Seamstress With Newspaper (uncredited)","credit_id":"60f279ec1d78f200453f840b","order":29}],"crew":[{"adult":false,"gender":1,"id":515,"known_for_department":"Acting","name":"Glenn
+        Close","original_name":"Glenn Close","popularity":3.569,"profile_path":"/8FlKKFpUZ72oTpVKdVsjMmq1CWQ.jpg","credit_id":"60ef7019b7abb5007f995263","department":"Production","job":"Producer"},{"adult":false,"gender":1,"id":33685,"known_for_department":"Editing","name":"Tatiana
+        S. Riegel","original_name":"Tatiana S. Riegel","popularity":0.67,"profile_path":"/mms5qpMvookGWLw2UZ54QqO9hES.jpg","credit_id":"60ef7208134d58005d52e472","department":"Editing","job":"Editor"},{"adult":false,"gender":1,"id":10567,"known_for_department":"Writing","name":"Aline
+        Brosh McKenna","original_name":"Aline Brosh McKenna","popularity":1.812,"profile_path":null,"credit_id":"60ef20deab1bc70047ba487b","department":"Writing","job":"Story"},{"adult":false,"gender":2,"id":16177,"known_for_department":"Sound","name":"Ron
+        Bartlett","original_name":"Ron Bartlett","popularity":1.62,"profile_path":"/AmFG81joHLkvnh4Io20TdCCBk8P.jpg","credit_id":"6116f41ee54d5d0046c36ca6","department":"Sound","job":"Sound
+        Re-Recording Mixer"},{"adult":false,"gender":0,"id":15332,"known_for_department":"Sound","name":"Mark
+        P. Stoeckinger","original_name":"Mark P. Stoeckinger","popularity":0.6,"profile_path":null,"credit_id":"6116f446310325005e5ac98f","department":"Sound","job":"Supervising
+        Sound Editor"},{"adult":false,"gender":1,"id":17166,"known_for_department":"Costume
+        & Make-Up","name":"Jenny Beavan","original_name":"Jenny Beavan","popularity":1.008,"profile_path":null,"credit_id":"60ef6ef297fdec002f8331a7","department":"Costume
+        & Make-Up","job":"Costume Designer"},{"adult":false,"gender":2,"id":23485,"known_for_department":"Production","name":"Marc
+        Platt","original_name":"Marc Platt","popularity":0.6,"profile_path":"/1V51JQqDdoXnC4LElFfSPSjYGfY.jpg","credit_id":"60ef6fa6a44d090046675584","department":"Production","job":"Producer"},{"adult":false,"gender":2,"id":45398,"known_for_department":"Acting","name":"Steve
+        Zissis","original_name":"Steve Zissis","popularity":1.349,"profile_path":"/hiaDKTWD9dziiMjSDbCDh7bltDU.jpg","credit_id":"60ef20fbb7abb50047a98d99","department":"Writing","job":"Story"},{"adult":false,"gender":2,"id":50767,"known_for_department":"Directing","name":"Craig
+        Gillespie","original_name":"Craig Gillespie","popularity":2.066,"profile_path":"/pVHspL9QWsXCm3t3VXEaCJ9y8Zz.jpg","credit_id":"60ef20b29661fc005d7bb248","department":"Directing","job":"Director"},{"adult":false,"gender":1,"id":54693,"known_for_department":"Acting","name":"Emma
+        Stone","original_name":"Emma Stone","popularity":8.963,"profile_path":"/cZ8a3QvAnj2cgcgVL6g4XaqPzpL.jpg","credit_id":"60ef714f134d58005d52e2fa","department":"Production","job":"Executive
+        Producer"},{"adult":false,"gender":1,"id":56718,"known_for_department":"Writing","name":"Dana
+        Fox","original_name":"Dana Fox","popularity":2.387,"profile_path":null,"credit_id":"60ef20be6dc5070049406b12","department":"Writing","job":"Screenplay"},{"adult":false,"gender":2,"id":64830,"known_for_department":"Production","name":"Andrew
+        Gunn","original_name":"Andrew Gunn","popularity":0.6,"profile_path":null,"credit_id":"60ef704797fdec002f833428","department":"Production","job":"Producer"},{"adult":false,"gender":0,"id":65536,"known_for_department":"Writing","name":"Dodie
+        Smith","original_name":"Dodie Smith","popularity":2.36,"profile_path":null,"credit_id":"60ef210823be4600244e5cae","department":"Writing","job":"Novel"},{"adult":false,"gender":2,"id":77723,"known_for_department":"Writing","name":"Tony
+        McNamara","original_name":"Tony McNamara","popularity":0.811,"profile_path":"/xqvrpLtpYCOMbMkySCjcsavYGur.jpg","credit_id":"60ef20cacf1afd002a46c5bc","department":"Writing","job":"Screenplay"},{"adult":false,"gender":0,"id":236909,"known_for_department":"Camera","name":"Nicolas
+        Karakatsanis","original_name":"Nicolas Karakatsanis","popularity":1.009,"profile_path":null,"credit_id":"60ef6f6aa579f9005e64563b","department":"Crew","job":"Cinematography"},{"adult":false,"gender":1,"id":940376,"known_for_department":"Writing","name":"Kelly
+        Marcel","original_name":"Kelly Marcel","popularity":2.971,"profile_path":"/thpdVW7O1975GcA3eNs1H8UIlmd.jpg","credit_id":"60ef20f1a44d09002d43b2d4","department":"Writing","job":"Story"},{"adult":false,"gender":0,"id":1032069,"known_for_department":"Production","name":"Mark
+        Mostyn","original_name":"Mark Mostyn","popularity":1.214,"profile_path":null,"credit_id":"60ef7090a579f90046c25187","department":"Production","job":"Co-Producer"},{"adult":false,"gender":0,"id":1034755,"known_for_department":"Crew","name":"Lori
+        Korngiebel","original_name":"Lori Korngiebel","popularity":0.6,"profile_path":null,"credit_id":"60ef7112dcf875002f6235e1","department":"Production","job":"Associate
+        Producer"},{"adult":false,"gender":0,"id":1172514,"known_for_department":"Art","name":"Fiona
+        Crombie","original_name":"Fiona Crombie","popularity":0.6,"profile_path":null,"credit_id":"60ef6f16d18fb9005dd29172","department":"Art","job":"Production
+        Design"},{"adult":false,"gender":0,"id":1334485,"known_for_department":"Sound","name":"Alan
+        Rankin","original_name":"Alan Rankin","popularity":0.6,"profile_path":null,"credit_id":"6116f47725882300751eb749","department":"Sound","job":"Sound
+        Designer"},{"adult":false,"gender":0,"id":1392083,"known_for_department":"Sound","name":"Ann
+        Scibelli","original_name":"Ann Scibelli","popularity":0.609,"profile_path":null,"credit_id":"6116f4530f0da50080b3da1a","department":"Sound","job":"Sound
+        Designer"},{"adult":false,"gender":0,"id":1404853,"known_for_department":"Costume
+        & Make-Up","name":"Nadia Stacey","original_name":"Nadia Stacey","popularity":0.6,"profile_path":null,"credit_id":"60ef6f8b3344c6005eacd101","department":"Costume
+        & Make-Up","job":"Makeup & Hair"},{"adult":false,"gender":0,"id":1435642,"known_for_department":"Sound","name":"Martyn
+        Zub","original_name":"Martyn Zub","popularity":0.6,"profile_path":null,"credit_id":"6116f43a151c5c002c77884f","department":"Sound","job":"Sound
+        Designer"},{"adult":false,"gender":0,"id":1435642,"known_for_department":"Sound","name":"Martyn
+        Zub","original_name":"Martyn Zub","popularity":0.6,"profile_path":null,"credit_id":"6116f433ec370c005cabc94f","department":"Sound","job":"Sound
+        Re-Recording Mixer"},{"adult":false,"gender":2,"id":1487710,"known_for_department":"Art","name":"Martin
+        Foley","original_name":"Martin Foley","popularity":0.6,"profile_path":null,"credit_id":"6116f39c258823005ebac086","department":"Art","job":"Supervising
+        Art Director"},{"adult":false,"gender":2,"id":1533516,"known_for_department":"Sound","name":"Nicholas
+        Britell","original_name":"Nicholas Britell","popularity":0.6,"profile_path":"/6xbBWMcup9MQlkdNvbsA4bhzYVp.jpg","credit_id":"60ef724f87e63e0074414262","department":"Sound","job":"Music"},{"adult":false,"gender":0,"id":1551809,"known_for_department":"Art","name":"Lydia
+        Fry","original_name":"Lydia Fry","popularity":0.695,"profile_path":null,"credit_id":"6116f3afcee48100458c6d71","department":"Art","job":"Art
+        Direction"},{"adult":false,"gender":1,"id":1564277,"known_for_department":"Production","name":"Michelle
+        Wright","original_name":"Michelle Wright","popularity":0.6,"profile_path":null,"credit_id":"60ef71b30f21c6008024fce6","department":"Production","job":"Executive
+        Producer"},{"adult":false,"gender":0,"id":1717342,"known_for_department":"Visual
+        Effects","name":"Max Wood","original_name":"Max Wood","popularity":0.6,"profile_path":null,"credit_id":"6116f4a13a9937005b096aa4","department":"Visual
+        Effects","job":"Visual Effects Supervisor"},{"adult":false,"gender":2,"id":1824243,"known_for_department":"Art","name":"Kevin
+        Timon Hill","original_name":"Kevin Timon Hill","popularity":0.6,"profile_path":null,"credit_id":"6116f3cd3503980045c46674","department":"Art","job":"Art
+        Direction"},{"adult":false,"gender":0,"id":2014406,"known_for_department":"Art","name":"Luke
+        Whitelock","original_name":"Luke Whitelock","popularity":0.6,"profile_path":null,"credit_id":"6116f40025882300751eb5b2","department":"Art","job":"Art
+        Direction"},{"adult":false,"gender":0,"id":2109201,"known_for_department":"Production","name":"Kristin
+        Burr","original_name":"Kristin Burr","popularity":0.6,"profile_path":null,"credit_id":"60ef6fe30f21c6008024f8e8","department":"Production","job":"Producer"},{"adult":false,"gender":1,"id":2600679,"known_for_department":"Art","name":"Georgia
+        Warner","original_name":"Georgia Warner","popularity":0.6,"profile_path":null,"credit_id":"6116f3e5cee481002e285f79","department":"Art","job":"Art
+        Direction"},{"adult":false,"gender":0,"id":3158072,"known_for_department":"Production","name":"Jared
+        leboff","original_name":"Jared leboff","popularity":0.6,"profile_path":null,"credit_id":"60ef7071cf1afd0047182820","department":"Production","job":"Producer"}]}'
+  recorded_at: Fri, 22 Oct 2021 10:20:48 GMT
+recorded_with: VCR 6.0.0

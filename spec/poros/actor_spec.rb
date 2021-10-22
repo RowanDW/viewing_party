@@ -1,50 +1,189 @@
 require 'rails_helper'
 
 RSpec.describe Actor do
-  before :each do
-    main_attrs = {
-      "genres": [
-        {"id": 28, "name": "Action"},
-        {"id": 80, "name": "Crime"},
-        {"id": 53, "name": "Thriller"}
-      ],
+  it "exists and has attributes", :vcr do
+    cast = {
       "id": 385128,
-      "overview": "Cars go fast and explode",
-      "runtime": 143,
-      "title": "F9",
-      "vote_average": 7.4
-    }
-
-    cast_attrs =  {
       "cast": [
-          {"name": "Vin Diesel", "character": "Dominic Toretto"},
-          {"name": "Michelle Rodriguez","character": "Letty Ortiz"}
-       ]
-    }
-
-    review_attrs = {
-      "results": [
-        {author: "Anon1", content: "Meh"},
-        {author: "Anon2", content: "Amazing"}
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 12835,
+              "known_for_department": "Acting",
+              "name": "Vin Diesel",
+              "original_name": "Vin Diesel",
+              "popularity": 25.563,
+              "profile_path": "/9uxTwqB8anAiPomB6Kqm6A73VTV.jpg",
+              "cast_id": 0,
+              "character": "Dominic Toretto",
+              "credit_id": "58433f95c3a3684813001d9f",
+              "order": 0
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 17647,
+              "known_for_department": "Acting",
+              "name": "Michelle Rodriguez",
+              "original_name": "Michelle Rodriguez",
+              "popularity": 12.319,
+              "profile_path": "/hulQAiXNFLq4VDYVxBPgK009njf.jpg",
+              "cast_id": 19,
+              "character": "Letty Ortiz",
+              "credit_id": "5d11ce8092514131e9ba6ace",
+              "order": 1
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 8169,
+              "known_for_department": "Acting",
+              "name": "Tyrese Gibson",
+              "original_name": "Tyrese Gibson",
+              "popularity": 10.199,
+              "profile_path": "/jxoy4fbXNKFQtBdK73cLXEz3ufS.jpg",
+              "cast_id": 1,
+              "character": "Roman Pearce",
+              "credit_id": "58433fb5c3a3684813001db8",
+              "order": 2
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 8171,
+              "known_for_department": "Acting",
+              "name": "Ludacris",
+              "original_name": "Ludacris",
+              "popularity": 9.255,
+              "profile_path": "/erkJijujhe48vhJ8iCEtVpNEeVn.jpg",
+              "cast_id": 37,
+              "character": "Tej Parker",
+              "credit_id": "5d82ada4869e75001e0c385e",
+              "order": 3
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 56446,
+              "known_for_department": "Acting",
+              "name": "John Cena",
+              "original_name": "John Cena",
+              "popularity": 11.251,
+              "profile_path": "/rgB2eIOt7WyQjdgJCOuESdDlrjg.jpg",
+              "cast_id": 22,
+              "character": "Jakob Toretto",
+              "credit_id": "5d11cebd0e0a26641aca2468",
+              "order": 4
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 1251069,
+              "known_for_department": "Acting",
+              "name": "Nathalie Emmanuel",
+              "original_name": "Nathalie Emmanuel",
+              "popularity": 6.903,
+              "profile_path": "/bZT5ETfTk30w4XeXOyN8a0FrPPx.jpg",
+              "cast_id": 34,
+              "character": "Ramsey",
+              "credit_id": "5d4999d8028f143e5c006133",
+              "order": 5
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 22123,
+              "known_for_department": "Acting",
+              "name": "Jordana Brewster",
+              "original_name": "Jordana Brewster",
+              "popularity": 13.139,
+              "profile_path": "/8VzFsSfT7NnMGyH5JQBQdTxDHcO.jpg",
+              "cast_id": 20,
+              "character": "Mia Toretto",
+              "credit_id": "5d11ce8fc3a36809b220eb68",
+              "order": 6
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 61697,
+              "known_for_department": "Acting",
+              "name": "Sung Kang",
+              "original_name": "Sung Kang",
+              "popularity": 11.031,
+              "profile_path": "/wfuUkOZWuhkgfaA0Y3uMlQx0PXe.jpg",
+              "cast_id": 46,
+              "character": "Han Lue",
+              "credit_id": "5e34a1554ca67600175067ef",
+              "order": 7
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 12132,
+              "known_for_department": "Acting",
+              "name": "Michael Rooker",
+              "original_name": "Michael Rooker",
+              "popularity": 12.241,
+              "profile_path": "/dq3xFKDWJsQjPffm1bmB3TbMilq.jpg",
+              "cast_id": 35,
+              "character": "Buddy",
+              "credit_id": "5d5b496b60c75169a18d2c7b",
+              "order": 8
+          },
+          {
+              "adult": false,
+              "gender": 1,
+              "id": 15735,
+              "known_for_department": "Acting",
+              "name": "Helen Mirren",
+              "original_name": "Helen Mirren",
+              "popularity": 8.314,
+              "profile_path": "/1reKRrsdsHXJaRVHVyOEg4oPTcZ.jpg",
+              "cast_id": 33,
+              "character": "Magdalene 'Queenie' Shaw",
+              "credit_id": "5d49996a2d1e406fa1bfad02",
+              "order": 9
+          },
+          {
+              "adult": false,
+              "gender": 2,
+              "id": 6856,
+              "known_for_department": "Acting",
+              "name": "Kurt Russell",
+              "original_name": "Kurt Russell",
+              "popularity": 11.637,
+              "profile_path": "/6g1d98oH4miG4k0ZiZWmF3Dt0bO.jpg",
+              "cast_id": 67,
+              "character": "Mr. Nobody",
+              "credit_id": "60a39c85764b9900779f010c",
+              "order": 10
+          }
       ]
     }
-    @movie = Movie.new(main_attrs, cast_attrs, review_attrs)
-  end
 
-  it "exists and has attributes" do
+    results = [
+      {actor: "Vin Diesel", character: "Dominic Toretto"},
+      {actor: "Michelle Rodriguez", character: "Letty Ortiz"},
+      {actor: "Tyrese Gibson", character: "Roman Pearce"},
+      {actor: "Ludacris", character: "Tej Parker"},
+      {actor: "John Cena", character: "Jakob Toretto"},
+      {actor: "Nathalie Emmanuel", character: "Ramsey"},
+      {actor: "Jordana Brewster", character: "Mia Toretto"},
+      {actor: "Sung Kang", character: "Han Lue"},
+      {actor: "Michael Rooker", character: "Buddy"},
+      {actor: "Helen Mirren", character: "Magdalene 'Queenie' Shaw"}
+    ]
+    
+    response = MovieFacade.all_cast(385128)
 
-    cast_results = [
-        {"actor": "Vin Diesel", "character": "Dominic Toretto"},
-        {"actor": "Michelle Rodriguez","character": "Letty Ortiz"}
-     ]
+    expect(response).to be_an Array
+    expect(response.count).to eq(10)
 
-    expect(@movie.cast).to be_an Array
-    expect(@movie.cast.count).to eq(2)
+    first_object = response.first
 
-    first_result = @movie.cast.first
-
-    expect(first_result).to be_an Actor
-    expect(first_result.name).to eq(cast_results.first[:actor])
-    expect(first_result.character).to eq(cast_results.first[:character])
+    expect(first_object).to be_an Actor
+    expect(first_object.name).to eq(results.first[:actor])
+    expect(first_object.character).to eq(results.first[:character])
   end
 end
