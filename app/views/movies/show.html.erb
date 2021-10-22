@@ -13,8 +13,8 @@
 
     <div class="col">
       <h3>Cast:</h3>
-      <% @movie.cast.each do |cast| %>
-        <p><%= cast[:actor] %> as <%= cast[:character] %></p>
+      <% @cast.each do |cast| %>
+        <p><%= cast.name %> as <%= cast.character %></p>
       <% end %><br>
     </div>
   </div>
@@ -24,7 +24,7 @@
     <%= link_to rec[:title], movie_path(rec[:id]), method: :get %><br>
   <% end %><br><br>
 
-  <h3>( <%= @movie.reviews.size %> )  Reviews :</h3>
-  <% @movie.reviews.each do |rev| %>
-    <p><b><%= rev[:author] %></b> - <%= rev[:content] %></p>
+  <h3>( <%= @reviews.size %> )  Reviews :</h3>
+  <% @reviews.each do |review| %>
+    <p><b><%= review.author %></b> - <%= review.content %></p>
   <% end %>

@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe MovieService do
 
   it "can get all movie details", :vcr do
-    response = MovieService.details(580489)
+    # response = MovieService.details(580489)
+    response = MovieService.request("/3/movie/580489")
 
     expect(response).to be_a Hash
 
@@ -29,11 +30,9 @@ RSpec.describe MovieService do
   it "can get recommended movie", :vcr do
     response = MovieService.recommended(580489)
 
-    expect(response).to be_a Hash
-    expect(response).to have_key :results
-    expect(response[:results]).to be_an Array
+    expect(response).to be_an Array
 
-    first_result = response[:results].second
+    first_result = response.second
 
     expect(first_result).to have_key :title
     expect(first_result[:title]).to be_a String
@@ -43,7 +42,8 @@ RSpec.describe MovieService do
   end
 
   it "can get movie cast", :vcr do
-    response = MovieService.cast(580489)
+    # response = MovieService.cast(580489)
+    response = MovieService.request("/3/movie/580489/credits")
 
     expect(response).to be_a Hash
     expect(response).to have_key :cast
@@ -61,7 +61,7 @@ RSpec.describe MovieService do
   end
 
   it "can get movie reviews", :vcr do
-    response = MovieService.reviews(580489)
+    response = MovieService.request("/3/movie/580489/reviews")
 
     expect(response).to be_a Hash
     expect(response).to have_key :results
@@ -79,11 +79,9 @@ RSpec.describe MovieService do
   it "can search for titles", :vcr do
     response = MovieService.search_title("venom")
 
-    expect(response).to be_a Hash
-    expect(response).to have_key :results
-    expect(response[:results]).to be_an Array
+    expect(response).to be_an Array
 
-    first_result = response[:results].first
+    first_result = response.first
 
     expect(first_result).to have_key :title
     expect(first_result[:title]).to be_a String
@@ -98,11 +96,9 @@ RSpec.describe MovieService do
   it "can search for top forty titles", :vcr do
     response = MovieService.top_forty(1)
 
-    expect(response).to be_a Hash
-    expect(response).to have_key :results
-    expect(response[:results]).to be_an Array
+    expect(response).to be_an Array
 
-    first_result = response[:results].second
+    first_result = response.second
 
     expect(first_result).to have_key :title
     expect(first_result[:title]).to be_a String
@@ -117,11 +113,9 @@ RSpec.describe MovieService do
   it "can list now playing titles", :vcr do
     response = MovieService.now_playing
 
-    expect(response).to be_a Hash
-    expect(response).to have_key :results
-    expect(response[:results]).to be_an Array
+    expect(response).to be_an Array
 
-    first_result = response[:results].second
+    first_result = response.second
 
     expect(first_result).to have_key :title
     expect(first_result[:title]).to be_a String

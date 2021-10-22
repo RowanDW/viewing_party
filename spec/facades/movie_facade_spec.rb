@@ -49,5 +49,21 @@ RSpec.describe 'MovieFacade' do
         expect(movie).to be_a(Movie)
       end
     end
+
+    describe '::all_cast' do
+      it 'returns all cast', :vcr do
+        movie = MovieFacade.all_cast(337404)
+
+        expect(movie).to be_an Array
+      end
+    end
+
+    describe '::all_reviews' do
+      it 'returns all reviews', :vcr do
+        movie = MovieFacade.all_reviews(337404)
+
+        expect(movie).to be_an Array
+      end
+    end
   end
 end
