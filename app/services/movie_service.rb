@@ -1,40 +1,25 @@
 class MovieService
-  def self.recommended(id)
-    request("/3/movie/#{id}/recommendations")
-  end
-
   def self.search_title(query)
-    request("/3/search/movie?query=#{query}")
-  end
-
-  def self.details(id)
-    response = conn.get("/3/movie/#{id}")
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
-  def self.cast(id)
-    response = conn.get("/3/movie/#{id}/credits")
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
-  def self.reviews(id)
-    response = conn.get("/3/movie/#{id}/reviews")
-    JSON.parse(response.body, symbolize_names: true)
+    request("/3/search/movie?query=#{query}")[:results]
   end
 
   def self.top_forty(page)
-    request("/3/discover/movie?page=#{page}")
+    request("/3/discover/movie?page=#{page}")[:results]
   end
 
   def self.now_playing
-    request('/3/movie/now_playing')
+    request('/3/movie/now_playing')[:results]
+  end
+
+  def self.recommended(id)
+    request("/3/movie/#{id}/recommendations")[:results]
   end
 
   private
 
   def self.request(path)
     response = conn.get(path)
-    JSON.parse(response.body, symbolize_names: true)[:results]
+    JSON.parse(response.body, symbolize_names: true)  #[:results]
   end
 
   def self.conn

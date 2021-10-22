@@ -8,13 +8,13 @@ class Movie
               :cast,
               :reviews
 
-  def initialize(details, cast_info, rev_info)
-    @id             = details[:id]
-    @title          = details[:title]
-    @overview       = details[:overview]
-    @vote_average   = details[:vote_average]
-    @runtime        = details[:runtime]
-    @genres         = get_genres(details[:genres])
+  def initialize(main_info, cast_info, rev_info)
+    @id             = main_info[:id]
+    @title          = main_info[:title]
+    @overview       = main_info[:overview]
+    @vote_average   = main_info[:vote_average]
+    @runtime        = main_info[:runtime]
+    @genres         = get_genres(main_info[:genres])
     @cast           = get_cast(cast_info[:cast])
     @reviews        = get_reviews(rev_info[:results])
   end

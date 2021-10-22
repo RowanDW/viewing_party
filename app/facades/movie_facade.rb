@@ -1,15 +1,13 @@
 class MovieFacade
   def self.movie_show(id)
-    details = MovieService.details(id)
-    cast = MovieService.cast(id)
-    reviews = MovieService.reviews(id)
-    @movie = Movie.new(details, cast, reviews)
+    info = MovieService.request("/3/movie/#{id}")
+    cast = MovieService.request("/3/movie/#{id}/credits")
+    reviews = MovieService.request("/3/movie/#{id}/reviews")
+    @movie = Movie.new(info, cast, reviews)
   end
 
   def self.top_forty
-    pg1 = MovieService.top_forty(1)
-    pg2 = MovieService.top_forty(2)
-    pg1 + pg2
+    MovieService.top_forty(1) + MovieService.top_forty(2)
   end
 
   def self.search_title(query)
