@@ -27,7 +27,7 @@ class MovieFacade
     MovieService.now_playing
   end
 
-  def self.recommended(id)
+  def self.recommendations(id)
     MovieService.recommended(id)
   end
 end

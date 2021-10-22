@@ -9,8 +9,6 @@ class MoviesController < ApplicationController
     @movie = MovieFacade.movie_show(params[:id])
     @cast = MovieFacade.all_cast(params[:id])
     @reviews = MovieFacade.all_reviews(params[:id])
-    @recommendations = MovieFacade.recommended(params[:id])
-    # require "pry"; binding.pry
-
+    @recommendations = MovieFacade.recommendations(params[:id])
   end
 end
