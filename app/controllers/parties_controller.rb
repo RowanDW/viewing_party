@@ -8,7 +8,6 @@ class PartiesController < ApplicationController
   def create
     @movie = MovieFacade.movie_show(party_params[:movie])
     new_party = Party.new(party_params)
-
     if party_params[:duration].to_i < @movie.runtime
       redirect_to "/parties/new?id=#{party_params[:movie]}"
       flash[:error] = 'Party duration cannot be less than movie run time.'
