@@ -50,21 +50,21 @@ RSpec.describe Movie do
     expect(@movie.runtime).to eq(143)
     expect(@movie.genres).to eq(["Action", "Crime", "Thriller"])
     expect(@movie.overview).to eq("Cars go fast and explode")
-    expect(@movie.cast).to eq(cast_results)
-    expect(@movie.reviews).to eq(rev_results)
+    expect(@movie.cast.first.name).to eq(cast_results.first[:actor])
+    expect(@movie.reviews.first.author).to eq(rev_results.first[:author])
   end
 
 
-  it ".list_genres" do
+  it ".get_genres" do
     genres = {"genres": [
       {id: 28, name: "Action"},
       {id: 80, name: "Crime"},
       {id: 53, name: "Thriller"}
     ]}
-    expect(@movie.list_genres(genres[:genres])).to eq(["Action", "Crime", "Thriller"])
+    expect(@movie.get_genres(genres[:genres])).to eq(["Action", "Crime", "Thriller"])
   end
 
-  it ".list_cast" do
+  it ".get_cast" do
     cast = {
       "id": 385128,
       "cast": [
@@ -238,10 +238,14 @@ RSpec.describe Movie do
       {actor: "Helen Mirren", character: "Magdalene 'Queenie' Shaw"}
     ]
     # Only add first 10
-    expect(@movie.list_cast(cast[:cast])).to eq(results)
+    actual = @movie.get_cast(cast[:cast])
+
+    expect(actual.length).to eq(10)
+    expect(actual.first.name).to eq(results.first[:actor])
+    expect(actual.first.character).to eq(results.first[:character])
   end
 
-  it ".add_reviews" do
+  it ".get_reviews" do
     reviews = {
       "id": 385128,
       "page": 1,
@@ -289,6 +293,12 @@ RSpec.describe Movie do
         content: "Sure no one watches FF series expecting amazing plot, but surely it is now pushing the boundaries of ridiculous. I did enjoy the previous films just as silly action flicks but this one had me sighing in disbelief midway through."
       }
     ]
-    expect(@movie.list_reviews(reviews[:results])).to eq(results)
+    # expect(@movie.get_reviews(reviews[:results])).to eq(results)
+
+    actual = @movie.get_reviews(reviews[:results])
+
+    expect(actual.length).to eq(2)
+    expect(actual.first.author).to eq(results.first[:author])
+    expect(actual.first.content).to eq(results.first[:content])
   end
 end

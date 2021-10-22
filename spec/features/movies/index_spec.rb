@@ -5,6 +5,7 @@ RSpec.describe "The movie index page" do
     @rowan = User.create(name: 'Rowan', email: "rowan@test.com", password: "test")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@rowan)
   end
+
   it "starts out showing the top 40 movies", :vcr do
     visit movies_path
 

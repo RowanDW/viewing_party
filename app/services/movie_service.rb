@@ -34,6 +34,12 @@ class MovieService
     parse_json(response)
   end
 
+  private
+  def self.request(path)
+    response = conn.get(path)
+    JSON.parse(response.body, symbolize_names: true)[:results]
+  end
+
   def self.conn
     Faraday.new(url: 'https://api.themoviedb.org/', params: { api_key: ENV['tmdb_api_key'] }) do |faraday|
       faraday.adapter Faraday.default_adapter
